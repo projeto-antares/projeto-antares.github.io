@@ -12,13 +12,12 @@
 <div class="wrap">
 <div class="button"><a class="chip" href="index.html">← Voltar</a></div>
 
-
 <header  id="sim-description" class="book">
     <h2>Movimento de projéteis</h2>
     <p>Ajuste os parâmetros no botão de configuração, lance e compare a trajetória simulada (linha cheia) com a ideal (tracejada).</p>
 </header>
 
-<section class="card"><div id="cv0" style="position: relative"><canvas id="cv"></canvas></div><div class="ro" id="ro"></div><p class="note" id="cmp"></p><hr style="height: 1px;"><details class="legenda" open><summary>Legenda</summary><div id="legenda"></div></details>
+<section class="card"><div id="cv0" style="position: relative"><canvas id="cv"></canvas></div><div class="ro" id="ro"></div><p class="note" id="cmp"></p><div id="legenda"></div>
 </section>
 
 <section id="opt">
@@ -31,6 +30,12 @@
 <label class="chk"><input type="checkbox" id="cv_a"><span class="sw" style="border-color:var(--a)"></span>Aceleração</label>
 <label class="chk"><input type="checkbox" id="cv_i" checked><span class="sw" style="border-top-style:dashed;border-color:var(--ghost)"></span>Parábola ideal (sem arrasto)</label>
 <label class="chk"><input type="checkbox" id="cv_t" checked><span class="sw" style="border-color:var(--acc)"></span>Rastro</label>
+</section>
+
+<section id="lvet">
+<div class="chk"><span class="sw" style="border-color:var(--acc)"></span>Velocidade \(\vec v\)</div>
+<div class="chk"><span class="sw" style="border-color:var(--vx)"></span>Componente horizontal \(\vec v_x\)</div>
+<div class="chk"><span class="sw" style="border-color:var(--vy)"></span>Componente vertical \(\vec v_y\)</div>
 </section>
 
 <section id="plt" class="plots">

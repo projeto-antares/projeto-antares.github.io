@@ -58,12 +58,12 @@ main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;align-items
 @media (max-width:1120px){main,.plots{grid-template-columns:minmax(0,1fr)}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px; }
 canvas{display:block;width:100%;border-radius:6px;background:var(--sky);}
-.ro{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
-.ro div{border-left:3px solid var(--line);padding:0 0 0 8px}
+.ro{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px;}
+.ro div{border-left:3px solid var(--line);padding:0 0 0 8px; }
 .ro small{display:block;color:var(--mut);font-size:1rem}
 .ro b{font-variant-numeric:tabular-nums;font-size:1rem}
 @media (max-width:480px){.ro{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.note{margin:10px 0 0;color:var(--mut);font-size:1rem;min-height:1.3em}
+.note{margin:10px 0 0;color:var(--mut);font-size:1rem;min-height:1.3em; font-family: 'Libertine', serif;}
 .btns{display:none;gap:8px;margin-bottom:12px}
 button{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 12px;border-radius:7px;cursor:pointer;flex:1}
 button.p{background:var(--acc);border-color:var(--acc);color: var(--card);font-weight:600}
@@ -191,11 +191,11 @@ p.header {
 /* ---- Zoom do canvas (Sim.interactive): botões na lateral direita ---- */
 /* .zbar{position:absolute;right:6px;top:40%;transform:translateY(-50%);display:flex;flex-direction:column;gap:4px} */
 .zbar{position:absolute;top:2%;left:5%;transform:translateX(0%);display:flex;flex-direction:row;gap:4px;flex-wrap: wrap; width:auto}
-.zbar button{flex:none;width:2em;height:1.5em;padding:0;font-size:1em;line-height:1;border-radius:6px;color: var(--acc);opacity: 1;}
+.zbar button{flex:none;width:2.5em;height:2em;padding:0;font-size:1em;line-height:1;border-radius:6px;color: var(--acc);opacity: 1;}
 .zbar button:hover,.zbar button:focus-visible{opacity:1; background-color: var(--acc); color: var(--card);  transition: 1s;}
 .zbar button.txt{font-size:12px;font-weight:600;}
 .zbar svg{width:1em;height:1em;display:block;margin:auto;}
-.zsep{flex:none;height:6px}
+.zsep{flex:none;height:6px; width:3px}
 @media (pointer:coarse){.zbar{gap:3px}.zbar button{width:32;height:32px;font-size:20px}.zbar button.txt{font-size:14px}.zbar svg{width:18px;height:18px}}   /* telas de toque: botões maiores */
 
 .icon-button:hover {
@@ -259,10 +259,18 @@ body.sim-fullscreen-active {
 }
 
 .sim-legend-item {
-  display: inline-flex;
+  display:inline-flex;
   align-items: center;
   gap: 5px;
   white-space: nowrap;
+}
+
+.sim-legend-title {
+  display: block;
+  flex: 0 0 100%;
+  margin: 0;
+  padding: 0;
+  white-space: normal;
 }
 
 .sim-legend-item svg {

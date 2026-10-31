@@ -18,18 +18,18 @@
      <p>Um bloco preso a uma mola e a um amortecedor, com arrasto proporcional à velocidade, \(F_d = -bv\). Varie \(b\) e veja os regimes subamortecido, criticamente amortecido e superamortecido, com a energia dissipada e o retrato de fase.</p>
 </header>
 
-<section class="card"><div><canvas id="cv" style="padding-top: 5%; padding-bottom: 1%;"></canvas></div><div class="ro" id="ro"></div><p class="note" id="cmp"></p><hr style="height: 1px;"><details class="legenda" open><summary>Legenda</summary><div id="legenda"></div></details></section>
+<section class="card"><div><canvas id="cv" style="padding-top: 5%; padding-bottom: 1%;"></canvas></div><div class="ro" id="ro"></div><p class="note" id="cmp"></p><div id="legenda"></div></section>
 
 <section id="opt">
 <div class="btns"><button class="p" id="bl">Soltar</button><button id="bp">Pausar</button><button id="bc">Reiniciar</button></div>
 <label class="chk" style="font-weight:600"><input type="checkbox" id="c_arr" checked>Com arrasto</label>
 <div id="ctl" style="margin-top:10px"></div>
-<label for="reg" style="font-size:.92rem">Ajustar \(b\) ao regime</label>
-<select id="reg"><option value="">Personalizado</option><option value="sub">Subamortecido (\(\zeta = 0{,}2\))</option><option value="crit">Criticamente amortecido (\(\zeta = 1\))</option><option value="super">Superamortecido (\(\zeta = 2\))</option></select>
-<label for="pl" style="font-size:.92rem">Corpo celeste</label>
-<select id="pl"><option value="9.8">Terra (9,8 m/s²)</option><option value="1.62">Lua (1,62 m/s²)</option><option value="3.71">Marte (3,71 m/s²)</option><option value="24.8">Júpiter (24,8 m/s²)</option></select>
+<label for="reg" class="chk" >Ajustar \(b\) ao regime</label>
+<select id="reg" class="chk" ><option value="">Personalizado</option><option value="sub">Subamortecido (ζ = 0,1)</option><option value="crit">Criticamente amortecido (ζ = 1)</option><option value="super">Superamortecido (ζ = 2)</option></select>
+<label for="pl" class="chk" >Corpo celeste</label>
+<select id="pl" class="chk" ><option value="9.8">Terra (9,8 m/s²)</option><option value="1.62">Lua (1,62 m/s²)</option><option value="3.71">Marte (3,71 m/s²)</option><option value="24.8">Júpiter (24,8 m/s²)</option></select>
 <label class="chk"><input type="checkbox" id="c_f" checked>Diagrama de forças</label>
-<label class="chk"><input type="checkbox" id="c_ref" checked>Equilíbrio \(x = 0\) e posição inicial \(x_0\)</label>
+<label class="chk"><input type="checkbox" id="c_ref" checked>Equilíbrio x=0 e posição inicial xₘ</label>
 <label class="chk"><input type="checkbox" id="c_bar" checked>Barras de energia</label>
 </section>
 
