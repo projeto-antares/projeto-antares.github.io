@@ -43,10 +43,10 @@
   --smallfont:12px var(--fonte);
   --labelfont:600 14px var(--fonte);
   --plotfont:600 14px var(--fonte);
-  --bg:#e2e3db;--card:#fff;--ink:#484537;--mut:#484537;--line:#C8C4B7;--grid:#C8C4B7;--acc:#a12f24;--ghost:#6C6753;--vx:#d97706;--vy:#0f9d58;--a:#d6336c;--ground:#ACA793;--sky:#e2e3db;
+  --bg:#e2e3db;--card:#fff;--ink:#484537;--mut:#484537;--line:#ACA793;--grid:#ACA793;--acc:#a12f24;--ghost:#6C6753;--vx:#d97706;--vy:#0f9d58;--a:#d6336c;--ground:#ACA793;--sky:#e2e3db;--plots:#cde9d7;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:light){:root:not([data-theme="light"]){--bg:#0e131b;--card:#0d1016;--ink:#e6ebf3;--mut:#9aa6b8;--line:#283244;--grid:#1f2937;--acc:#77b1d4;--ghost:#6f7b8f;--vx:#fbab3c;--vy:#3ddc84;--a:#ff6fa3;--ground:#6e5a3b;--sky:#111822}}
-:root[data-theme="dark"]{--bg:#0e131b;--card:#161d28;--ink:#e6ebf3;--mut:#9aa6b8;--line:#283244;--grid:#1f2937;--acc:#77b1d4;--ghost:#6f7b8f;--vx:#fbab3c;--vy:#3ddc84;--a:#ff6fa3;--ground:#6e5a3b;--sky:#111822}
+:root[data-theme="dark"]{--bg:#0e131b;--card:#161d28;--ink:#e6ebf3;--mut:#9aa6b8;--line:#283244;--grid:#1f2937;--acc:#77b1d4;--ghost:#6f7b8f;--vx:#fbab3c;--vy:#3ddc84;--a:#ff6fa3;--ground:#6e5a3b;--sky:#111822;--plots:#0d1016;}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg); color:var(--ink); font:18px/1.4 var(--fonte);}
 .wrap{max-width:1120px;margin:0 auto;padding:0px 14px 0}
@@ -54,10 +54,13 @@ body{margin:0;background:var(--bg); color:var(--ink); font:18px/1.4 var(--fonte)
 a, a:link, a:visited {color: var(--acc);text-decoration:none}
 header p{margin:0 0 14px;color:var(--mut)}
 main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;align-items:start}
-.plots{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:14px;margin-top:14px; height:100%}
+.plots{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:14px;margin-top:14px; height:100%;}
 @media (max-width:1120px){main,.plots{grid-template-columns:minmax(0,1fr)}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px; }
 canvas{display:block;width:100%;border-radius:6px;background:var(--sky);}
+.plots canvas{background: var(--plots);}
+.plots .card{background: var(--plots);}
+
 .ro{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px;}
 .ro div{border-left:3px solid var(--line);padding:0 0 0 8px; }
 .ro small{display:block;color:var(--mut);font-size:1rem}
