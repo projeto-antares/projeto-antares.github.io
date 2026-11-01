@@ -43,6 +43,8 @@
   Sim.controls($('ctl'), [
     { id: 'm',   label: 'Massa',                    unit: 'kg',  min: 0.5, max: 10,  step: 0.5, val: 2 },
     { id: 'f0',  label: 'Força inicial (F₀)',       unit: 'N',   min: 1,   max: 20,  step: 0.5, val: 4 },
+    { id: 'ang', label: 'Ângulo da força (θ)', unit: '°',
+  min: 0, max: 80, step: 1, val: 30 },
     { id: 'k',   label: 'Coeficiente (k)',          unit: 'N/m', min: 0,   max: 3,   step: 0.1, val: 1 },
     { id: 'xf',  label: 'Deslocamento final',       unit: 'm',   min: 2,   max: 10,  step: 0.5, val: 5 },
     { id: 'spd', label: 'Velocidade da animação',   unit: '×',   min: 0.1, max: 2,   step: 0.05, val: 1 }
@@ -52,13 +54,15 @@
   });
 
   const out = Sim.readouts($('ro'), [
-    ['t', 'Tempo (s)'],
-    ['x', 'Posição (m)'],
-    ['v', 'Velocidade (m/s)'],
-    ['f', 'Força aplicada (N)'],
-    ['w', 'Trabalho da força (J)'],
-    ['k', 'Energia cinética (J)']
-  ]);
+  ['t', 'Tempo (s)'],
+  ['x', 'Posição (m)'],
+  ['v', 'Velocidade (m/s)'],
+  ['f', 'Força aplicada (N)'],
+  ['fx', 'Componente horizontal (N)'],
+  ['ang', 'Ângulo (°)'],
+  ['w', 'Trabalho da força (J)'],
+  ['k', 'Energia cinética (J)']
+]);
 
     Sim.panel(cv, $('ctl'));
     Sim.panel(cv, $('opt'), { type: 'options' });
@@ -81,26 +85,43 @@
     };
   }
 
-  // Intensidade da força aplicada na posição x.
-  function force(x) {
-    return su.f0 + su.k * x;
-  }
+  function setup() {
+  return {
+    m: P.m,
+    f0: P.f0,
+    k: P.k,
+    xf: P.xf,
+    ang: P.ang * Math.PI / 180,
+    tEnd: 60
+  };
+}
 
-  // Trabalho analítico entre x = 0 e a posição x.
-  function work(x) {
-    return su.f0 * x + 0.5 * su.k * x * x;
-  }
+// Intensidade da força aplicada.
+function force(x) {
+  return su.f0 + su.k * x + x**2;
+}
 
-  function kinetic(v) {
-    return 0.5 * su.m * v * v;
-  }
+// Componente horizontal da força.
+function forceX(x) {
+  return force(x) * Math.cos(su.ang);
+}
+
+// Trabalho realizado pela força.
+function work(x) {
+  return (su.f0 * x + 0.5 * su.k * x * x + (x**3/3)) *
+         Math.cos(su.ang);
+}
+
+function kinetic(v) {
+  return 0.5 * su.m * v * v;
+}
 
   // Dados para os gráficos em função da posição:
   // [x, F(x), W(x), K(x)].
   // Sim.Plot usa a coluna 0 como coordenada horizontal independente.
-  function row() {
-    return [q[0], force(q[0]), work(q[0]), kinetic(q[1])];
-  }
+ function row() {
+  return [q[0], forceX(q[0]), work(q[0]), kinetic(q[1])];
+}
 
   function record() {
     const r = row();
@@ -156,8 +177,8 @@
   function deriv(z) {
     const x = z[0];
     const v = z[1];
-    return [v, force(x) / su.m];
-  }
+    return [v, forceX(x) / su.m];  
+}
 
   function step(dt) {
     if (mode !== 'run' || paused) return;
@@ -219,7 +240,7 @@
     ctx.clearRect(0, 0, W, H);
 
     const left = 100;
-    const right = W - 100;
+    const right = W - 200;
     const yFloor = H * 0.72;
     const blockW = Math.min(66, W * 0.14);
     const blockH = Math.min(48, H * 0.17);
@@ -232,12 +253,12 @@
     ctx.strokeStyle = C('--ground');
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(18, yFloor);
-    ctx.lineTo(W - 18, yFloor);
+    ctx.moveTo(38, yFloor);
+    ctx.lineTo(W - 38, yFloor);
     ctx.stroke();
 
     ctx.lineWidth = 1;
-    for (let x = 22; x < W - 18; x += 13) {
+    for (let x = 42; x < W - 38; x += 13) {
       ctx.beginPath();
       ctx.moveTo(x, yFloor + 2);
       ctx.lineTo(x - 6, yFloor + 8);
@@ -280,23 +301,61 @@
 
     // Corda e força de tração.
     const yForce = by + blockH / 2;
-    const ropeEnd = bx + blockW + 18;
+    const ropeEnd = bx + blockW + 2;
     ctx.strokeStyle = C('--ink');
-    ctx.lineWidth = 1.5;
+    ctx.lineWidth = 3.5;
     ctx.beginPath();
     ctx.moveTo(bx + blockW, yForce);
     ctx.lineTo(ropeEnd, yForce);
     ctx.stroke();
+    ctx.lineWidth = 1;
+    ctx.setLineDash([5,4]);
+    ctx.moveTo(bx + blockW, yForce);
+    ctx.lineTo(ropeEnd+100, yForce);
+    ctx.stroke();
+    ctx.setLineDash([]);
 
-    const f = force(q[0]);
-    const arrowLength = Math.min(W * 0.25, 22 + f * 3.2);
-    arrow(ctx, ropeEnd, yForce, arrowLength, 0, C('--vx'), 2.5);
 
-    ctx.fillStyle = C('--vx');
-    ctx.font = C('--normalfont');
-    ctx.textAlign = 'left';
-    ctx.fillText(`F(x) = ${f2(f)} N`, ropeEnd, yForce - 12);
+const f = force(q[0]);
+const fx = forceX(q[0]);
+const ang = su.ang;
 
+ctx.beginPath();
+ctx.strokeStyle = C('--ink');
+ctx.arc(ropeEnd,yForce,(22 + f * 10)/1.5,-su.ang,0,0);
+ctx.stroke();
+ctx.fillStyle = C('--ink');
+ctx.font = C('--normalfont');
+ctx.textAlign = 'left';
+
+ctx.fillText(
+  `θ`,
+  ropeEnd + ((22 + f * 10)/1.5)*Math.cos(ang/2) + 5,
+  yForce + ((22 + f * 10)/1.5)*Math.sin(-ang/2) + 5,
+);
+
+const arrowLength = Math.min(W * 0.25, 22 + f * 10.2);
+const arrowLengthX = Math.min(W * 0.25, 22 + fx * 10.2);
+
+const dx = arrowLength * Math.cos(ang);
+const dy = -arrowLength * Math.sin(ang);
+arrow(ctx, ropeEnd, yForce, dx, dy, C('--acc'), 2.5);
+arrow(ctx, ropeEnd, yForce, arrowLengthX, 0, C('--vx'), 2.5); //F_X
+
+ctx.fillStyle = C('--acc');
+ctx.font = C('--normalfont');
+ctx.textAlign = 'left';
+ctx.fillText(
+  `F(x) = ${f2(f)} N`,
+  ropeEnd + dx + 5,
+  yForce + dy - 8
+);
+ctx.fillStyle = C('--vx');
+ctx.fillText(
+  `F_x(x) = ${f2(fx)} N`,
+  ropeEnd + arrowLengthX + 5,
+  yForce,
+);
     // Indicação do deslocamento.
     ctx.strokeStyle = C('--acc');
     ctx.fillStyle = C('--acc');
@@ -315,6 +374,8 @@
     out('x', q[0]);
     out('v', q[1]);
     out('f', f);
+    out('fx', forceX(q[0]));
+    out('ang', P.ang);
     out('w', work(q[0]));
     out('k', kinetic(q[1]));
 
@@ -331,15 +392,17 @@
   // ---------------------------------------------------------------------
 
   const plotF = new Sim.Plot($('p1'), {
-    title: 'Força × posição',
-    mt: 8,
-    series: [
-      { col: 1, name: 'F(x)', color: '--vec' }
-    ]
-  });
+  // title: 'Componente horizontal da força × posição',
+  title:'',
+  mt: 8,
+  series: [
+    { col: 1, name: 'Fₓ(x)', color: '--vx' }
+  ]
+}, true);
 
   const plotW = new Sim.Plot($('p2'), {
-    title: 'Trabalho e energia × posição',
+    title:'',
+    // title: 'Trabalho e energia × posição',
     mt: 8,
     series: [
       { col: 2, name: 'W', color: '--acc' },
@@ -349,7 +412,7 @@
 
   function drawPlots() {
     plotF.draw(rows, null, su.xf);
-    plotW.draw(rows, null, su.xf);
+    // plotW.draw(rows, null, su.xf);
   }
 
   // ---------------------------------------------------------------------

@@ -138,7 +138,7 @@ window.CATALOGO={
     topico: 'energia',
     tags: ['trabalho', 'força variável', 'energia cinética'],
     arquivo: 'trabalho.html',
-    disponivel: false,
+    // disponivel: false,
     icone: IC.trabalho
   },
   {

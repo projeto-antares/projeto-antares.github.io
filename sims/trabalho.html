@@ -22,10 +22,11 @@
 <section id="opt">
 <div class="btns"><button class="p" id="bl">Soltar</button><button id="bp">Pausar</button><button id="bc">Reiniciar</button></div>
 <div id="ctl" style="margin-top:10px"></div>
-<label for="pl" style="font-size:.92rem">Corpo celeste</label>
+
+<!-- <label for="pl" style="font-size:.92rem">Corpo celeste</label>
 <select id="pl"><option value="9.8">Terra (9,8 m/s²)</option><option value="1.62">Lua (1,62 m/s²)</option><option value="3.71">Marte (3,71 m/s²)</option><option value="24.8">Júpiter (24,8 m/s²)</option></select>
 <label class="chk"><input type="checkbox" id="c_f" checked>Diagrama de forças</label>
-<label class="chk"><input type="checkbox" id="c_res">Força resultante em cada bloco</label>
+<label class="chk"><input type="checkbox" id="c_res">Força resultante em cada bloco</label> -->
 </section>
 
 <section id="lvet">
@@ -36,9 +37,8 @@
 </section>
 
 <section id="plt" class="plots">
-<div class="card"><div class="pt"><b>Deslocamento</b> \(y\) em função de \(t\)<span style="color:var(--acc)">\(y\)</span></div><div><canvas id="p1"></canvas></div></div>
-<div class="card"><div class="pt"><b>Velocidade</b> em função de \(t\)<span style="color:var(--vy)">\(v\)</span></div><div><canvas id="p2"></canvas></div></div>
-<!-- <div class="card"><div class="pt"><b>Energia</b> em função de \(t\)<span style="color:var(--vx)">\(K\)</span><span style="color:var(--vy)">\(\Delta U\)</span><span style="color:var(--acc)">\(\Delta E\)</span></div><div><canvas id="p3"></canvas></div></div> -->
+<div class="card"><div><canvas id="p1"></canvas></div></div>
+<div class="card" hidden><div><canvas id="p2"></canvas></div></div>
 </section>
 
 </div>
