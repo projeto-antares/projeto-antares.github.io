@@ -1,5 +1,6 @@
 !.gitignore
 local-scripts
+obsolete
 js/core.js
 js/init.js
 js/core-old.js
