@@ -34,7 +34,7 @@
   const on=!!it.arquivo&&it.disponivel!==false,tag=on?'a':'div',nova=on&&(it.novaAba!==undefined?it.novaAba:o.abrirEmNovaAba)?' target="_blank" rel="noopener"':'';
   return '<'+tag+' class="card sim'+(it.destaque?' wide':'')+(it.disponivel===false?' off':'')+'"'+(on?' href="'+it.arquivo+'"'+nova:'')+'>'+
    (it.imagem?'<img class="capa" src="'+it.imagem+'" alt="'+String(it.titulo||'').replace(/<[^>]*>/g,'').replace(/"/g,'')+'">':'<div class="sim-ic">'+(it.icone||gen)+'</div>')+
-   '<h3>'+it.titulo+'</h3><p>'+(it.descricao||'')+'</p>'+(on?'<span class="go">'+(it.botao||'Abrir')+' →</span>':'')+
+   '<h3>'+it.titulo+'</h3><p class="book">'+(it.descricao||'')+'</p>'+(on?'<span class="go">'+(it.botao||'Abrir')+' →</span>':'')+
    '<div class="tags">'+(it.tags||[]).map(t=>'<span class="tag">'+t+'</span>').join('')+(it.disponivel===false?'<span class="tag soon">em breve</span>':'')+'</div></'+tag+'>';
  }
  if(C.sobre){$('sobre').innerHTML=C.sobre;$('sobre').hidden=false}
