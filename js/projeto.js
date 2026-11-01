@@ -42,7 +42,7 @@ window.PROJETO={
  sobre:'<p>Projeto para elaboração e distribuição de material de apoio (livros, notas de aula e simulações), nas áreas de Física e Astronomia, seguindo o modelo dos chamados Recursos Educacionais Abertos (do inglês, <em>Open Educational Resources</em>). <a href="sobre.html">Leia mais →</a></p>',
  secoes:[
   {id:'simulacoes',titulo:'Simulações',descricao:'Simulações interativas que rodam diretamente no navegador. Não é necessário instalar nada.',itens:[
-   {titulo:'Simulações de Física',descricao:'Mecânica básica: cinemática, leis de Newton, momento, energia, rotação, gravitação e oscilações. As grandezas físicas principais são apresentadas em gráficos em tempo real.',arquivo:'sims/index.html',botao:'Abrir as simulações',tags:['mecânica','interativo','gráficos'],icone:IC.simulacoes,destaque:true},
+   {titulo:'Simulações de Física',descricao:'Mecânica básica: cinemática, leis de Newton, momento, energia, rotação, gravitação e oscilações. As grandezas físicas principais são apresentadas em gráficos em tempo real.',arquivo:'sims/fisica.html',botao:'Abrir as simulações',tags:['mecânica','interativo','gráficos'],icone:IC.simulacoes,destaque:true},
    {titulo:'Simulações de Astronomia',descricao:'Leis de Kepler, movimentos da Terra.',arquivo:'sims/astro.html',botao:'Abrir as simulações',tags:['astronomia','interativo','gráficos'],icone:IC.astro,destaque:true,disponivel:false}
   ]},
   {id:'livro',titulo:'Publicações',descricao:'Material didático disponibilizado pelo projeto de forma acessível no formato PDF. Ao longo dos capítulos, códigos QR levam às simulações específicas que descrevem exemplos ou problemas discutidos em cada livro. Por ora, apenas o livro de Fundamentos da Mecânica (Volume 1) está disponível para download.',itens:[

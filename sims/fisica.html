@@ -32,7 +32,7 @@
  const sims=C.simulacoes||[],tops=C.topicos||[],$=Sim.$,norm=s=>String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
  let filtro=(location.hash||'#todos').slice(1),busca='';
  if(filtro!=='todos'&&!tops.some(t=>t.id===filtro))filtro='todos';
- document.title=o.titulo+' - Projeto Antαres';$('tt').innerHTML=o.titulo;$('st').innerHTML=o.subtitulo;
+ document.title=o.titulo+' - Projeto Antαres';$('tt').innerHTML=o.titulo;$('st').innerHTML=o.subtitulo;//$('st').className='card';
  // visível = respeita "em breve", o filtro de tópico e a busca (título, descrição e tags, sem acentos)
  const vis=s=>(s.disponivel!==false||o.mostrarEmBreve)&&(filtro==='todos'||s.topico===filtro)&&(!busca||norm([s.titulo,s.descricao,(s.tags||[]).join(' ')].join(' ')).includes(norm(busca)));
  const generico='<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="24" cy="24" r="14"/></svg>';

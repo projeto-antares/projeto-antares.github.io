@@ -37,12 +37,14 @@ const IC={
  loop:S+'<path d="M2 11 C5 20 10 32 20 37 H46"/><circle cx="32" cy="28" r="9"/><circle cx="8" cy="16" r="3.5" fill="currentColor" stroke="none"/></svg>',
  orbita:S+'<ellipse cx="24" cy="24" rx="19" ry="11"/><circle cx="24" cy="24" r="4.5" fill="currentColor" stroke="none"/><circle cx="42" cy="20" r="3" fill="currentColor" stroke="none"/></svg>',
  pendulo:S+'<path d="M12 6h24"/><path d="M24 6V22" stroke-dasharray="2 3"/><circle cx="24" cy="22" r="2.5" fill="currentColor" stroke="none"/><path d="M24 6L10 38"/><circle cx="10" cy="38" r="4.5" fill="currentColor" stroke="none"/><path d="M24 22L38 38" stroke-dasharray="2 3"/><circle cx="38" cy="38" r="4.5" stroke-dasharray="2 4" fill=var(--card) /></svg>',
+circular: S+'<circle cx="24" cy="24" r="15"/><circle cx="35" cy="14" r="3.5" fill="currentColor" stroke="none"/></svg>',
+trabalho: S+'<path d="M4 38h40"/><rect x="8" y="27" width="10" height="11"/><path d="M18 27l17-16m-7 1 7-1-1 7"/></svg>',
 };
 window.CATALOGO={
  opcoes:{
   titulo:'Simulações de Física',
-  subtitulo:'Mecânica básica: cinemática, leis de Newton, momento, rotação e gravitação. Cada simulação roda direto no navegador.',
-  agruparPorTopico:true,mostrarBusca:true,mostrarFiltros:true,mostrarEmBreve:false,mostrarTema:false,abrirEmNovaAba:false
+  subtitulo:'Nesta página, são incluídas reproduções simuladas simples de situações físicas que são tratadas em diferentes tópicos de Física básica. Na maioria das simulações, gráficos temporais mostram a evolução das diferentes variáveis do sistema representado. Cada simulação é independente e roda diretamente no navegador, sendo possível ajustar variáveis e modos de exibição.',
+  agruparPorTopico:true,mostrarBusca:true,mostrarFiltros:true,mostrarEmBreve:true,mostrarTema:false,abrirEmNovaAba:false
  },
  topicos:[
   {id:'cinematica',nome:'Cinemática',descricao:'Movimento em uma e duas dimensões'},
@@ -57,21 +59,142 @@ window.CATALOGO={
   {id:'termodinamica',nome:'Termodinâmica',descricao:''},
   {id:'eletromagnetismo',nome:'Eletromagnetismo',descricao:''},
  ],
- simulacoes:[
-  {id:'projeteis',titulo:'Movimento de projéteis',descricao:'Trajetória com e sem resistência do ar, vetores de velocidade e gráficos de \\(x(t)\\), \\(y(t)\\) e \\(\\vec v(t)\\).',topico:'cinematica',tags:['posição','velocidade','aceleração'],arquivo:'projeteis.html',icone:IC.projetil},
-  {id:'inclinado',titulo:'Plano inclinado',descricao:'Bloco em um plano inclinado, com e sem atrito, com todas as forças que atuam sobre ele \\((\\vec F_g, \\vec N, \\vec f)\\).',topico:'newton',tags:['forças','diagramas','atrito'],arquivo:'inclinado.html',icone:IC.inclinado},
-  {id:'atwood',titulo:'Máquina de Atwood',descricao:'Duas massas ligadas por uma polia: aceleração e tração.',topico:'newton',tags:['polia','forças','diagramas'],arquivo:'atwood.html',disponivel:true,icone:IC.atwood},
-  // {id:'blocos-plano',titulo:'Blocos conectados',descricao:'Um bloco em um plano horizontal está conectado a outro sobre um plano inclinado. A corda ideal que os conecta passa por uma polia também ideal.',topico:'newton',tags:['polia','forças','diagramas','atrito'],arquivo:'blocos-plano.html',icone:IC.blocosplano},
-  {id:'blocos',titulo:'Blocos conectados',descricao:'Blocos em planos inclinados por diferentes ângulos estão conectados por uma corda ideal que passa por uma polia fixa também ideal.',topico:'newton',tags:['polia','forças','diagramas','atrito'],arquivo:'blocos.html',icone:IC.blocos},
-  {id:'loop',titulo:'Conservação de energia no loop',descricao:'Conservação de energia para uma partícula solta de uma altura \\(h\\) que percorre um loop de raio \\(R\\).',topico:'energia',tags:['energia','cinética','potencial'],arquivo:'loop.html',icone:IC.loop},
-  {id:'colisao1d',titulo:'Colisão em 1D',descricao:'Aplicação da conservação do momento linear na colisão em uma dimensão.',topico:'momento',tags:['momento','restituição','1D'],arquivo:'colisao1d.html',icone:IC.colisao1d},
-  {id:'colisao',titulo:'Colisão em 2D',descricao:'Aplicação da conservação do momento linear na colisão de partículas pontuais.',topico:'momento',tags:['momento','restituição','2D'],arquivo:'colisao.html',icone:IC.colisao},
-  {id:'pendulo',titulo:'Pêndulo de Galileu',descricao:'Um pino prende o fio, mas a partícula sobe de novo até a altura \\(h\\): conservação de energia, tração \\(\\vec T\\) e força gravitacional \\(\\vec F_g\\).',topico:'energia',tags:['pêndulo','energia','conservação'],arquivo:'pendulo.html',icone:IC.pendulo},
-  {id:'doiscorpos',titulo:'Problema de dois corpos',descricao:'Dois corpos em órbita em torno de um centro de massa comum.',topico:'gravitacao',tags:['órbitas'],disponivel:true,arquivo:'doiscorpos.html',icone:IC.orbita},
-  {id:'massamola',titulo:'Sistema massa-mola',descricao:'Oscilador harmônico clássico com ou sem amortecimento.',topico:'oscilacoes',tags:['oscilador','atrito','energia'],arquivo:'massamola.html',icone:IC.oscilador},
-  // ---- em breve (sem arquivo: aparecem como cartão desativado) ----
-  {id:'rolamento',titulo:'Rolamento em plano inclinado',descricao:'Disco, anel e esfera: quem chega primeiro? Momento de inércia \\(I\\).',topico:'rotacao',tags:['inércia'],disponivel:false,icone:IC.rolamento},
-  {id:'momang',titulo:'Conservação do momento angular',descricao:'Patinadora que encolhe os braços: \\(L = I\\omega\\) constante.',topico:'rotacao',tags:['momento angular'],disponivel:false,icone:IC.giro},
- ]
+ simulacoes: [
+  // ---- Cinemática ----
+  {
+    id: 'projeteis',
+    titulo: 'Movimento de projéteis',
+    descricao: 'Trajetória com e sem resistência do ar, vetores de velocidade e gráficos de \\(x(t)\\), \\(y(t)\\) e \\(\\vec v(t)\\).',
+    topico: 'cinematica',
+    tags: ['posição', 'velocidade', 'aceleração'],
+    arquivo: 'projeteis.html',
+    icone: IC.projetil
+  },
+  {
+    id: 'circular',
+    titulo: 'Movimento circular',
+    descricao: 'Movimento circular uniforme e uniformemente variado, com vetores velocidade, aceleração tangencial e centrípeta, força resultante e gráficos.',
+    topico: 'cinematica',
+    tags: ['movimento circular', 'aceleração', 'forças'],
+    arquivo: 'circular.html',
+    disponivel: false,
+    icone: IC.circular
+  },
+
+  // ---- Leis de Newton ----
+  {
+    id: 'inclinado',
+    titulo: 'Plano inclinado',
+    descricao: 'Bloco em um plano inclinado, com e sem atrito, com todas as forças que atuam sobre ele \\((\\vec F_g, \\vec N, \\vec f)\\).',
+    topico: 'newton',
+    tags: ['forças', 'diagramas', 'atrito'],
+    arquivo: 'inclinado.html',
+    icone: IC.inclinado
+  },
+  {
+    id: 'atwood',
+    titulo: 'Máquina de Atwood',
+    descricao: 'Duas massas ligadas por uma polia: aceleração e tração.',
+    topico: 'newton',
+    tags: ['polia', 'forças', 'diagramas'],
+    arquivo: 'atwood.html',
+    icone: IC.atwood
+  },
+  {
+    id: 'blocos',
+    titulo: 'Blocos conectados',
+    descricao: 'Blocos em planos inclinados por diferentes ângulos estão conectados por uma corda ideal que passa por uma polia fixa também ideal.',
+    topico: 'newton',
+    tags: ['polia', 'forças', 'diagramas', 'atrito'],
+    arquivo: 'blocos.html',
+    icone: IC.blocos
+  },
+
+// ---- Momento linear ----
+  {
+    id: 'colisao1d',
+    titulo: 'Colisão em 1D',
+    descricao: 'Aplicação da conservação do momento linear na colisão em uma dimensão.',
+    topico: 'momento',
+    tags: ['momento', 'restituição', '1D'],
+    arquivo: 'colisao1d.html',
+    icone: IC.colisao1d
+  },
+  {
+    id: 'colisao',
+    titulo: 'Colisão em 2D',
+    descricao: 'Aplicação da conservação do momento linear na colisão de partículas pontuais.',
+    topico: 'momento',
+    tags: ['momento', 'restituição', '2D'],
+    arquivo: 'colisao.html',
+    icone: IC.colisao
+  },
+
+  // ---- Energia ----
+  {
+    id: 'trabalho',
+    titulo: 'Trabalho de uma força variável',
+    descricao: 'Trabalho realizado por uma força dependente da posição, representado pela área sob a curva no gráfico da força em função do deslocamento.',
+    topico: 'energia',
+    tags: ['trabalho', 'força variável', 'energia cinética'],
+    arquivo: 'trabalho.html',
+    disponivel: false,
+    icone: IC.trabalho
+  },
+  {
+    id: 'loop',
+    titulo: 'Conservação de energia no loop',
+    descricao: 'Conservação de energia para uma partícula solta de uma altura \\(h\\) que percorre um loop de raio \\(R\\).',
+    topico: 'energia',
+    tags: ['energia', 'cinética', 'potencial'],
+    arquivo: 'loop.html',
+    icone: IC.loop
+  },
+  {
+    id: 'pendulo',
+    titulo: 'Pêndulo de Galileu',
+    descricao: 'Um pino prende o fio, mas a partícula sobe de novo até a altura \\(h\\): conservação de energia, tração \\(\\vec T\\) e força gravitacional \\(\\vec F_g\\).',
+    topico: 'energia',
+    tags: ['pêndulo', 'energia', 'conservação'],
+    arquivo: 'pendulo.html',
+    icone: IC.pendulo
+  },
+
+
+  // ---- Rotação ----
+  {
+    id: 'rolamento',
+    titulo: 'Rolamento em plano inclinado',
+    descricao: 'Comparação entre disco, cilindro, anel e esfera em rolamento sem deslizamento, explorando a energia cinética translacional e rotacional e o momento de inércia.',
+    topico: 'rotacao',
+    tags: ['rolamento', 'energia', 'momento de inércia'],
+    arquivo: 'rolamento.html',
+    disponivel: false,
+    icone: IC.rolamento
+  },
+
+  // ---- Gravitação ----
+  {
+    id: 'doiscorpos',
+    titulo: 'Problema de dois corpos',
+    descricao: 'Dois corpos em órbita em torno de um centro de massa comum.',
+    topico: 'gravitacao',
+    tags: ['órbitas'],
+    arquivo: 'doiscorpos.html',
+    icone: IC.orbita
+  },
+
+  // ---- Oscilações ----
+  {
+    id: 'massamola',
+    titulo: 'Sistema massa-mola',
+    descricao: 'Oscilador harmônico clássico com ou sem amortecimento.',
+    topico: 'oscilacoes',
+    tags: ['oscilador', 'atrito', 'energia'],
+    arquivo: 'massamola.html',
+    icone: IC.oscilador
+  },
+
+]
 };
 })();
