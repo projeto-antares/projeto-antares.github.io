@@ -1,73 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Blocos conectados</title>
-<link rel="icon" type="image/png" href="../img/icons/antares-192.png">
-<script src="/js/init.min.js"></script>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+     <title>Blocos conectados</title>
+     <link rel="icon" type="image/png" href="../img/icons/antares-192.png">
+     <script src="/js/init.min.js"></script>
 </head>
 
 <body>
-<header id="site-header"></header>
-<div class="wrap">
-<div class="button"><a class="chip" href="fisica.html">← Voltar</a></div>
+     <header id="site-header"></header>
+     <div class="wrap">
+          <div class="button"><a class="chip" href="/fisica.html">← Voltar</a></div>
 
 
-<header  id="sim-description" class="book">
-     <h2>Blocos conectados por uma polia</h2>
-     <p>Dois blocos ligados por uma corda que passa por uma polia fixa, apoiados em planos de mesmo comprimento. Varie as massas, os ângulos e o atrito e observe o movimento do sistema. Nos gráficos, as curvas tracejadas representam o movimento sem atrito.</p>
-</header>
+          <header id="sim-description" class="book">
+               <h2>Blocos conectados por uma polia</h2>
+               <p>Dois blocos ligados por uma corda que passa por uma polia fixa, apoiados em planos de mesmo
+                    comprimento. Varie as massas, os ângulos e o atrito e observe o movimento do sistema. Nos gráficos,
+                    as curvas tracejadas representam o movimento sem atrito.</p>
+          </header>
 
-<section class="card"><div><canvas id="cv"></canvas></div><div class="ro" id="ro"></div><p class="note" id="cmp"></p><div id="legenda"></div></section>
+          <section class="card">
+               <div><canvas id="cv"></canvas></div>
+               <div class="ro" id="ro"></div>
+               <p class="note" id="cmp"></p>
+               <div id="legenda"></div>
+          </section>
 
-<section id="opt">
-<div class="btns"><button class="p" id="bl">Soltar</button><button id="bp">Pausar</button><button id="bc">Reiniciar</button></div>
-<label class="chk" style="font-weight:600"><input type="checkbox" id="c_atr" checked>Com atrito</label>
-<div id="ctl" style="margin-top:10px"></div>
-<label for="pl" style="font-size:.92rem">Corpo celeste</label>
-<select id="pl"><option value="9.8">Terra (9,8 m/s²)</option><option value="1.62">Lua (1,62 m/s²)</option><option value="3.71">Marte (3,71 m/s²)</option><option value="24.8">Júpiter (24,8 m/s²)</option></select>
-<label class="chk"><input type="checkbox" id="c_f" checked>Diagrama de forças</label>
-<label class="chk"><input type="checkbox" id="c_comp">Componentes da força gravitacional</label>
-<label class="chk"><input type="checkbox" id="c_res">Força resultante em cada bloco</label>
-</section>
+          <section id="opt">
+               <div class="btns"><button class="p" id="bl">Soltar</button><button id="bp">Pausar</button><button
+                         id="bc">Reiniciar</button></div>
+               <label class="chk" style="font-weight:600"><input type="checkbox" id="c_atr" checked>Com atrito</label>
+               <div id="ctl" style="margin-top:10px"></div>
+               <label for="pl" style="font-size:.92rem">Corpo celeste</label>
+               <select id="pl">
+                    <option value="9.8">Terra (9,8 m/s²)</option>
+                    <option value="1.62">Lua (1,62 m/s²)</option>
+                    <option value="3.71">Marte (3,71 m/s²)</option>
+                    <option value="24.8">Júpiter (24,8 m/s²)</option>
+               </select>
+               <label class="chk"><input type="checkbox" id="c_f" checked>Diagrama de forças</label>
+               <label class="chk"><input type="checkbox" id="c_comp">Componentes da força gravitacional</label>
+               <label class="chk"><input type="checkbox" id="c_res">Força resultante em cada bloco</label>
+          </section>
 
-<section id="lvet">
-<div class="chk"><span class="sw" style="border-color:var(--a)"></span>Força gravitacional \(\vec F_g\)</div>
-<div class="chk"><span class="sw" style="border-color:var(--acc)"></span>Normal \(\vec N\)</div>
-<div class="chk"><span class="sw" style="border-color:var(--vx)"></span>Atrito \(\vec f\)</div>
-<div class="chk"><span class="sw" style="border-color:var(--vy)"></span>Tração \(\vec T\)</div>
-<div class="chk"><span class="sw" style="border-color:var(--ink)"></span>Resultante \(\vec F\)</div>
-</section>
+          <section id="lvet">
+               <div class="chk"><span class="sw" style="border-color:var(--a)"></span>Força gravitacional \(\vec F_g\)
+               </div>
+               <div class="chk"><span class="sw" style="border-color:var(--acc)"></span>Normal \(\vec N\)</div>
+               <div class="chk"><span class="sw" style="border-color:var(--vx)"></span>Atrito \(\vec f\)</div>
+               <div class="chk"><span class="sw" style="border-color:var(--vy)"></span>Tração \(\vec T\)</div>
+               <div class="chk"><span class="sw" style="border-color:var(--ink)"></span>Resultante \(\vec F\)</div>
+          </section>
 
-<section id="plt" class="plots">
-<div class="card"><div class="pt"><b>Deslocamento</b> \(x\) em função de \(t\)<span style="color:var(--acc)">\(x\)</span></div><div><canvas id="p1"></canvas></div></div>
-<div class="card"><div class="pt"><b>Velocidade</b> em função de \(t\)<span style="color:var(--vy)">\(v\)</span></div><div><canvas id="p2"></canvas></div></div>
-<div class="card"><div class="pt"><b>Energia</b> em função de \(t\)<span style="color:var(--vx)">\(K\)</span><span style="color:var(--vy)">\(\Delta U\)</span><span style="color:var(--acc)">\(\Delta E\)</span></div><div><canvas id="p3"></canvas></div></div>
-</section>
+          <section id="plt" class="plots">
+               <div class="card">
+                    <div class="pt"><b>Deslocamento</b> \(x\) em função de \(t\)<span
+                              style="color:var(--acc)">\(x\)</span></div>
+                    <div><canvas id="p1"></canvas></div>
+               </div>
+               <div class="card">
+                    <div class="pt"><b>Velocidade</b> em função de \(t\)<span style="color:var(--vy)">\(v\)</span></div>
+                    <div><canvas id="p2"></canvas></div>
+               </div>
+               <div class="card">
+                    <div class="pt"><b>Energia</b> em função de \(t\)<span style="color:var(--vx)">\(K\)</span><span
+                              style="color:var(--vy)">\(\Delta U\)</span><span style="color:var(--acc)">\(\Delta
+                              E\)</span></div>
+                    <div><canvas id="p3"></canvas></div>
+               </div>
+          </section>
 
-</div>
+     </div>
 
-<div id="book" class="book">
+     <div id="book" class="book">
 
-<p>Dois blocos, de massas \(m_1\) e \(m_2\), estão em dois planos inclinados de ângulos \(\theta_1\) e \(\theta_2\), ligados por uma corda sobre uma polia fixa no vértice. Para o bloco \(i\), a força gravitacional é \(F_{g,i} = m_i g\), e</p>
-\[ F_{g,i\parallel} = m_i g\sin\theta_i, \qquad F_{g,i\perp} = m_i g\cos\theta_i, \qquad N_i = m_i g\cos\theta_i. \]
-<p>A corda é inextensível e sem massa, e a polia é ideal (sem massa e sem atrito). Logo, a tração \(T\) é a mesma nos dois lados, e os blocos têm acelerações de mesmo módulo. Seja \(x\) o deslocamento, positivo quando \(m_1\) desce e \(m_2\) sobe, e \(a = \ddot x\). A força motriz do sistema é</p>
-\[ F_{mot} = m_1 g\sin\theta_1 - m_2 g\sin\theta_2. \]
-<p>Sem atrito, \(a = F_{mot}/(m_1 + m_2)\). Com atrito, o sistema só se move se \(|F_{mot}| \gt \mu_e\,(N_1 + N_2)\). Em movimento, cada bloco sofre atrito cinético \(\mu_c N_i\), contra o sentido do deslizamento. Com \(\sigma = \pm 1\) o sinal de \(F_{mot}\) (o sentido do movimento):</p>
-\[ a = \frac{F_{mot} - \sigma\,\mu_c\,(N_1 + N_2)}{m_1 + m_2}. \]
-<p>A tração sai da equação do bloco 1 ao longo de \(x\), \(m_1 a = F_{g,1\parallel} - T + F_{a,1}\), em que \(F_{a,1} = -\sigma\mu_c N_1\) é a componente do atrito sobre \(m_1\) ao longo de \(x\):</p>
-\[ T = F_{g,1\parallel} + F_{a,1} - m_1 a. \]
-<p>Em repouso, o atrito estático é indeterminado: há duas incógnitas (um atrito por bloco) e uma só equação. A simulação o divide entre os blocos na proporção das normais, \(F_{a,i} \propto N_i\), de modo que a soma equilibre \(F_{mot}\). O coeficiente \(\mu_c\) é limitado a \(\mu_e\).</p>
-<p>Os planos têm a mesma altura \(H\), então seus comprimentos diferem. Cada bloco parte do ponto médio do seu plano, e o movimento termina quando um bloco chega perto da polia ou da base:</p>
-\[ L_1 = \frac{H}{\sin\theta_1}, \qquad L_2 = \frac{H}{\sin\theta_2}. \]
-<p>A variação da energia potencial do sistema é \(\Delta U = -F_{mot}\,x\), e \(\Delta E = K + \Delta U\), com \(K = \tfrac12 (m_1 + m_2)\,v^2\). Sem atrito, \(\Delta E = 0\); com atrito, \(\Delta E\) é negativa, e seu módulo é o trabalho do atrito. A integração usa Runge-Kutta de 4ª ordem com passo fixo de \(1/240\) s.</p>
-</div>
+          <p>Dois blocos, de massas \(m_1\) e \(m_2\), estão em dois planos inclinados de ângulos \(\theta_1\) e
+               \(\theta_2\), ligados por uma corda sobre uma polia fixa no vértice. Para o bloco \(i\), a força
+               gravitacional é \(F_{g,i} = m_i g\), e</p>
+          \[ F_{g,i\parallel} = m_i g\sin\theta_i, \qquad F_{g,i\perp} = m_i g\cos\theta_i, \qquad N_i = m_i
+          g\cos\theta_i. \]
+          <p>A corda é inextensível e sem massa, e a polia é ideal (sem massa e sem atrito). Logo, a tração \(T\) é a
+               mesma nos dois lados, e os blocos têm acelerações de mesmo módulo. Seja \(x\) o deslocamento, positivo
+               quando \(m_1\) desce e \(m_2\) sobe, e \(a = \ddot x\). A força motriz do sistema é</p>
+          \[ F_{mot} = m_1 g\sin\theta_1 - m_2 g\sin\theta_2. \]
+          <p>Sem atrito, \(a = F_{mot}/(m_1 + m_2)\). Com atrito, o sistema só se move se \(|F_{mot}| \gt \mu_e\,(N_1 +
+               N_2)\). Em movimento, cada bloco sofre atrito cinético \(\mu_c N_i\), contra o sentido do deslizamento.
+               Com \(\sigma = \pm 1\) o sinal de \(F_{mot}\) (o sentido do movimento):</p>
+          \[ a = \frac{F_{mot} - \sigma\,\mu_c\,(N_1 + N_2)}{m_1 + m_2}. \]
+          <p>A tração sai da equação do bloco 1 ao longo de \(x\), \(m_1 a = F_{g,1\parallel} - T + F_{a,1}\), em que
+               \(F_{a,1} = -\sigma\mu_c N_1\) é a componente do atrito sobre \(m_1\) ao longo de \(x\):</p>
+          \[ T = F_{g,1\parallel} + F_{a,1} - m_1 a. \]
+          <p>Em repouso, o atrito estático é indeterminado: há duas incógnitas (um atrito por bloco) e uma só equação. A
+               simulação o divide entre os blocos na proporção das normais, \(F_{a,i} \propto N_i\), de modo que a soma
+               equilibre \(F_{mot}\). O coeficiente \(\mu_c\) é limitado a \(\mu_e\).</p>
+          <p>Os planos têm a mesma altura \(H\), então seus comprimentos diferem. Cada bloco parte do ponto médio do seu
+               plano, e o movimento termina quando um bloco chega perto da polia ou da base:</p>
+          \[ L_1 = \frac{H}{\sin\theta_1}, \qquad L_2 = \frac{H}{\sin\theta_2}. \]
+          <p>A variação da energia potencial do sistema é \(\Delta U = -F_{mot}\,x\), e \(\Delta E = K + \Delta U\), com
+               \(K = \tfrac12 (m_1 + m_2)\,v^2\). Sem atrito, \(\Delta E = 0\); com atrito, \(\Delta E\) é negativa, e
+               seu módulo é o trabalho do atrito. A integração usa Runge-Kutta de 4ª ordem com passo fixo de \(1/240\)
+               s.</p>
+     </div>
 
-<footer></footer>
+     <footer></footer>
 
-<script src="/js/core.min.js"></script>
-<script src="js/blocos.min.js"></script>
+     <script src="/js/core.min.js"></script>
+     <script src="js/blocos.min.js"></script>
 
 </body>
+
 </html>

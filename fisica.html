@@ -43,7 +43,7 @@
       const generico = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="24" cy="24" r="14"/></svg>';
       function card(s) {
         const on = s.disponivel !== false, tag = on ? 'a' : 'div', nova = on && o.abrirEmNovaAba ? ' target="_blank" rel="noopener"' : '';
-        return '<' + tag + ' class="card sim' + (on ? '' : ' off') + '"' + (on ? ' href="' + s.arquivo + '"' + nova : '') + '><div class="sim-ic">' + (s.icone || generico) + '</div><h3>' + s.titulo + '</h3><p>' + (s.descricao || '') + '</p><div class="tags">' +
+        return '<' + tag + ' class="card sim' + (on ? '' : ' off') + '"' + (on ? ' href="sims/' + s.arquivo + '"' + nova : '') + '><div class="sim-ic">' + (s.icone || generico) + '</div><h3>' + s.titulo + '</h3><p>' + (s.descricao || '') + '</p><div class="tags">' +
           (s.tags || []).map(t => '<span class="tag">' + t + '</span>').join('') + (on ? '' : '<span class="tag soon">em breve</span>') + '</div></' + tag + '>';
       }
       function render() {

@@ -43,8 +43,8 @@
     secoes: [
       {
         id: 'sims', titulo: 'Simulações', descricao: 'Simulações interativas que rodam diretamente no navegador. Não é necessário instalar nada.', itens: [
-          { titulo: 'Simulações de Física', descricao: 'Mecânica básica: cinemática, leis de Newton, momento, energia, rotação, gravitação e oscilações. As grandezas físicas principais são apresentadas em gráficos em tempo real.', arquivo: 'sims/fisica.html', botao: 'Abrir as simulações', tags: ['mecânica', 'interativo', 'gráficos'], icone: IC.simulacoes, destaque: true },
-          { titulo: 'Simulações de Astronomia', descricao: 'Leis de Kepler, movimentos da Terra.', arquivo: 'sims/astro.html', botao: 'Abrir as simulações', tags: ['astronomia', 'interativo', 'gráficos'], icone: IC.astro, destaque: false, disponivel: false }
+          { titulo: 'Simulações de Física', descricao: 'Mecânica básica: cinemática, leis de Newton, momento, energia, rotação, gravitação e oscilações. As grandezas físicas principais são apresentadas em gráficos em tempo real.', arquivo: 'fisica.html', botao: 'Abrir as simulações', tags: ['mecânica', 'interativo', 'gráficos'], icone: IC.simulacoes, destaque: true },
+          { titulo: 'Simulações de Astronomia', descricao: 'Leis de Kepler, movimentos da Terra.', arquivo: 'astro.html', botao: 'Abrir as simulações', tags: ['astronomia', 'interativo', 'gráficos'], icone: IC.astro, destaque: false, disponivel: false }
         ]
       },
       {

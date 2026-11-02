@@ -1,68 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Plano inclinado</title>
-<link rel="icon" type="image/png" href="../img/icons/antares-192.png">
-<script src="/js/init.min.js"></script>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+     <title>Plano inclinado</title>
+     <link rel="icon" type="image/png" href="../img/icons/antares-192.png">
+     <script src="/js/init.min.js"></script>
 </head>
+
 <body>
-<header id="site-header"></header>
-<div class="wrap">
-<div class="button"><a class="chip" href="fisica.html">← Voltar</a></div>
+     <header id="site-header"></header>
+     <div class="wrap">
+          <div class="button"><a class="chip" href="/fisica.html">← Voltar</a></div>
 
+          <header id="sim-description" class="book">
+               <h2>Plano inclinado</h2>
+               <p>Solte o bloco e compare o movimento com e sem atrito. Os gráficos tracejados mostram o caso sem
+                    atrito.</p>
+          </header>
 
-<header  id="sim-description" class="book">
-     <h2>Plano inclinado</h2>
-     <p>Solte o bloco e compare o movimento com e sem atrito. Os gráficos tracejados mostram o caso sem atrito.</p>
-</header>
+          <section class="card">
+               <div><canvas id="cv"></canvas></div>
+               <div class="ro" id="ro"></div>
+               <p class="note" id="cmp"></p>
+               <div id="legenda"></div>
+          </section>
 
-<section class="card">
-     <div><canvas id="cv"></canvas></div><div class="ro" id="ro"></div><p class="note" id="cmp"></p><div id="legenda"></div>
-</section>
+          <section id="opt">
+               <div class="btns"><button class="p" id="bl">Soltar</button><button id="bp">Pausar</button><button
+                         id="bc">Reiniciar</button></div>
+               <label class="chk" style="font-weight:600"><input type="checkbox" id="c_atr" checked>Com atrito</label>
+               <div id="ctl" style="margin-top:10px"></div>
+               <label for="pl" style="font-size:.92rem">Corpo celeste</label>
+               <select id="pl">
+                    <option value="9.8">Terra (9,8 m/s²)</option>
+                    <option value="1.62">Lua (1,62 m/s²)</option>
+                    <option value="3.71">Marte (3,71 m/s²)</option>
+                    <option value="24.8">Júpiter (24,8 m/s²)</option>
+               </select>
+               <label class="chk"><input type="checkbox" id="c_f" checked>Diagrama de forças</label>
+               <label class="chk"><input type="checkbox" id="c_comp">Componentes da força gravitacional</label>
+               <label class="chk"><input type="checkbox" id="c_res">Força resultante</label>
+          </section>
 
-<section id="opt">
-     <div class="btns"><button class="p" id="bl">Soltar</button><button id="bp">Pausar</button><button id="bc">Reiniciar</button></div>
-     <label class="chk" style="font-weight:600"><input type="checkbox" id="c_atr" checked>Com atrito</label>
-     <div id="ctl" style="margin-top:10px"></div>
-     <label for="pl" style="font-size:.92rem">Corpo celeste</label>
-     <select id="pl"><option value="9.8">Terra (9,8 m/s²)</option><option value="1.62">Lua (1,62 m/s²)</option><option value="3.71">Marte (3,71 m/s²)</option><option value="24.8">Júpiter (24,8 m/s²)</option></select>
-     <label class="chk"><input type="checkbox" id="c_f" checked>Diagrama de forças</label>
-     <label class="chk"><input type="checkbox" id="c_comp">Componentes da força gravitacional</label>
-     <label class="chk"><input type="checkbox" id="c_res">Força resultante</label>
-</section>
+          <section id="lvet">
+               <div class="chk"><span class="sw" style="border-color:var(--a)"></span>Força gravitacional \(\vec F_g\)
+               </div>
+               <div class="chk"><span class="sw" style="border-color:var(--acc)"></span>Normal \(\vec N\)</div>
+               <div class="chk"><span class="sw" style="border-color:var(--vx)"></span>Atrito \(\vec f\)</div>
+               <div class="chk"><span class="sw" style="border-color:var(--vy)"></span>Resultante \(\vec F\)</div>
+          </section>
 
-<section id="lvet">
-     <div class="chk"><span class="sw" style="border-color:var(--a)"></span>Força gravitacional \(\vec F_g\)</div>
-     <div class="chk"><span class="sw" style="border-color:var(--acc)"></span>Normal \(\vec N\)</div>
-     <div class="chk"><span class="sw" style="border-color:var(--vx)"></span>Atrito \(\vec f\)</div>
-     <div class="chk"><span class="sw" style="border-color:var(--vy)"></span>Resultante \(\vec F\)</div>
-</section>
+          <section id="plt" class="plots">
+               <div class="card">
+                    <div><canvas id="p1"></canvas></div>
+               </div>
+               <div class="card">
+                    <div><canvas id="p2"></canvas></div>
+               </div>
+               <div class="card">
+                    <div><canvas id="p3"></canvas></div>
+               </div>
+          </section>
 
-<section id="plt" class="plots">
-     <div class="card"><div><canvas id="p1"></canvas></div></div>
-     <div class="card"><div><canvas id="p2"></canvas></div></div>
-     <div class="card"><div><canvas id="p3"></canvas></div></div>
-</section>
+     </div>
 
-</div>
+     <div id="book" class="book">
+          <p>Um bloco de massa \(m\) é solto do repouso no topo de um plano inclinado de ângulo \(\theta\) e comprimento
+               \(L\). A força gravitacional \(\vec F_g\), de módulo \(F_g = mg\), tem uma componente ao longo do plano e
+               outra perpendicular a ele, e a normal equilibra a perpendicular:</p>
+          \[ F_{g\parallel} = mg\sin\theta, \qquad F_{g\perp} = mg\cos\theta, \qquad N = F_{g\perp} = mg\cos\theta \]
+          <p>Sem atrito, a força resultante ao longo do plano é \(F_{g\parallel}\), e a aceleração é \(a =
+               g\sin\theta\).</p>
+          <p>Com atrito, o bloco em repouso só desliza se \(F_{g\parallel}\) superar o atrito estático máximo, isto é,
+               se \(\tan\theta \gt \mu_e\). Caso contrário, o atrito estático vale \(f = F_{g\parallel}\) e o bloco fica
+               parado. Deslizando, o atrito cinético é \(f = \mu_c N\), e a força resultante é</p>
+          \[ F = F_{g\parallel} - \mu_c N, \qquad a = \frac{F}{m} = g\,(\sin\theta - \mu_c\cos\theta) \]
+          <p>O coeficiente \(\mu_c\) é limitado a \(\mu_e\), como ocorre em geral nos materiais (\(\mu_c \le \mu_e\)).
+          </p>
+          <p>Medindo a energia potencial a partir da base, \(U = mg\,(L - s)\sin\theta\), com \(s\) a distância
+               percorrida desde o topo. Sem atrito, \(E = K + U\) se conserva. Com atrito, a energia dissipada é o
+               trabalho do atrito, e vale a conservação total:</p>
+          \[ Q = \mu_c N\,s, \qquad E + Q = E_0 = mgL\sin\theta \]
+          <p>A integração usa Runge-Kutta de 4ª ordem com passo fixo de \(1/240\,\mathrm{s}\). O bloco para ao chegar à
+               base, e a referência tracejada dos gráficos é o caso sem atrito.</p>
+     </div>
 
-<div id="book" class="book">
-<p>Um bloco de massa \(m\) é solto do repouso no topo de um plano inclinado de ângulo \(\theta\) e comprimento \(L\). A força gravitacional \(\vec F_g\), de módulo \(F_g = mg\), tem uma componente ao longo do plano e outra perpendicular a ele, e a normal equilibra a perpendicular:</p>
-\[ F_{g\parallel} = mg\sin\theta, \qquad F_{g\perp} = mg\cos\theta, \qquad N = F_{g\perp} = mg\cos\theta \]
-<p>Sem atrito, a força resultante ao longo do plano é \(F_{g\parallel}\), e a aceleração é \(a = g\sin\theta\).</p>
-<p>Com atrito, o bloco em repouso só desliza se \(F_{g\parallel}\) superar o atrito estático máximo, isto é, se \(\tan\theta \gt \mu_e\). Caso contrário, o atrito estático vale \(f = F_{g\parallel}\) e o bloco fica parado. Deslizando, o atrito cinético é \(f = \mu_c N\), e a força resultante é</p>
-\[ F = F_{g\parallel} - \mu_c N, \qquad a = \frac{F}{m} = g\,(\sin\theta - \mu_c\cos\theta) \]
-<p>O coeficiente \(\mu_c\) é limitado a \(\mu_e\), como ocorre em geral nos materiais (\(\mu_c \le \mu_e\)).</p>
-<p>Medindo a energia potencial a partir da base, \(U = mg\,(L - s)\sin\theta\), com \(s\) a distância percorrida desde o topo. Sem atrito, \(E = K + U\) se conserva. Com atrito, a energia dissipada é o trabalho do atrito, e vale a conservação total:</p>
-\[ Q = \mu_c N\,s, \qquad E + Q = E_0 = mgL\sin\theta \]
-<p>A integração usa Runge-Kutta de 4ª ordem com passo fixo de \(1/240\,\mathrm{s}\). O bloco para ao chegar à base, e a referência tracejada dos gráficos é o caso sem atrito.</p>
-</div>
-
-<footer></footer>
-<script src="/js/core.min.js"></script>
-<script src="js/inclinado.min.js"></script>
+     <footer></footer>
+     <script src="/js/core.min.js"></script>
+     <script src="js/inclinado.min.js"></script>
 
 </body>
+
 </html>
