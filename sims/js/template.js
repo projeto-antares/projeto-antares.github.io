@@ -69,10 +69,11 @@
   Sim.panel(cv, $('ctl'));
   Sim.panel(cv, $('opt'), { type: 'options' });
   Sim.panel(cv, $('lvet'), { type: 'palette' });
+  Sim.panel(cv, $('results'), { type: 'values' });
   Sim.panel(cv, $('plt'), { type: 'plot' });
   Sim.panel(cv, $('book'), { type: 'book' });
   Sim.legend('#legenda');
-Sim.panel(cv, $('legenda'), { type: 'legend' });
+  Sim.panel(cv, $('legenda'), { type: 'legend' });
 
   // ---------------------------------------------------------------------
   // 3. MODELO FÍSICO
