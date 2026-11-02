@@ -28,27 +28,24 @@
                     <div class="note" id="cmp"></div>
                </div>
                <div id="legenda"></div>
+               <div id="ctl"></div>
           </section>
 
           <section id="opt">
                <div class="btns"><button class="p" id="bl">Soltar</button><button id="bp">Pausar</button><button
                          id="bc">Reiniciar</button></div>
-               <div id="ctl" style="margin-top:10px"></div>
-
-               <label for="pl" style="font-size:.92rem">Tipo de força variável</label>
-               <select id="pl">
+               <div id="zoomcfg"></div>
+               <label for="pl" class="chk">Tipo de força variável</label>
+               <select id="pl" class="chk">
                     <option value="1">Linear (padrão)</option>
                     <option value="2">Quadrática</option>
                </select>
-               <!-- <label class="chk"><input type="checkbox" id="c_f" checked>Diagrama de forças</label> -->
-               <!-- <label class="chk"><input type="checkbox" id="c_res">Força resultante em cada bloco</label> -->
           </section>
 
           <section id="lvet">
-               <!-- <div class="chk"><span class="sw" style="border-color:var(--a)"></span>Força gravitacional \(\vec F_g\)</div>
-<div class="chk"><span class="sw" style="border-color:var(--acc)"></span>Normal \(\vec N\)</div>
-<div class="chk"><span class="sw" style="border-color:var(--vy)"></span>Tração \(\vec T\)</div>
-<div class="chk"><span class="sw" style="border-color:var(--ink)"></span>Resultante \(\vec F\)</div> -->
+               <div class="chk"><span class="sw" style="border-color:var(--acc)"></span>Força \(\vec F(x)\)</div>
+               <div class="chk"><span class="sw" style="border-color:var(--vx)"></span>Componente horizontal \(\vec
+                    F_x(x)\)</div>
           </section>
 
           <section id="plt" class="plots">

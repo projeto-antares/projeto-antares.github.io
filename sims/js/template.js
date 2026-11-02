@@ -39,8 +39,13 @@
   let su;                           // grandezas derivadas em setup()
   let lastStatus = '';
 
-  Sim.interactive(cv, fit);
-  Sim.playbar(cv, () => mode, () => paused);
+  const zoom = Sim.interactive(cv, fit, {
+    max: 8,
+    onZoom: z => {
+      if (Sim.ctl.zoom)
+        Sim.ctl.zoom.upd(Math.round(z * 100));
+    }
+  }); Sim.playbar(cv, () => mode, () => paused);
 
   // ---------------------------------------------------------------------
   // 2. INTERFACE E CONTROLES
@@ -49,11 +54,24 @@
   // Parâmetros físicos reiniciam a simulação; parâmetros visuais não.
   Sim.controls($('ctl'), [
     { id: 'par1', label: 'Parâmetro 1', unit: '', min: 0, max: 10, step: 0.1, val: 1 },
-    { id: 'par2', label: 'Parâmetro 2', unit: '', min: 0, max: 10, step: 0.1, val: 2 },
-    { id: 'spd', label: 'Velocidade da animação', unit: '×', min: 0.1, max: 2, step: 0.05, val: 1 }
+    { id: 'par2', label: 'Parâmetro 2', unit: '', min: 0, max: 10, step: 0.1, val: 2 }
   ], P, id => {
     if (id === 'spd') return;
     reset();
+  });
+
+  Sim.controls($('zoomcfg'), [
+    { id: 'spd', label: 'Velocidade da animação', unit: '×', min: .1, max: 2, step: .1, val: 1 },
+    {
+      id: 'zoom', label: 'Zoom (+/-) <a href="#" id="resetZoom">Restaurar</a>', min: 25, max: 400, step: 5, val: 100, unit: '%'
+    }
+  ], P, id => {
+    if (id !== 'spd' && id !== 'zoom') reset(); if (id === 'zoom') { zoom.setZoom(P.zoom / 100); return; }
+  });
+
+  $('resetZoom').addEventListener('click', e => {
+    e.preventDefault();
+    zoom.reset();
   });
 
   // Controles HTML opcionais:
