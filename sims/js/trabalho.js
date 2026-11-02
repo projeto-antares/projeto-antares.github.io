@@ -434,7 +434,7 @@
 
   const plotW = new Sim.Plot($('p2'), {
     title: '',
-    // title: 'Trabalho e energia × posição',
+    title: '',
     mt: 8,
     series: [
       { col: 2, name: 'W', color: '--acc' },
