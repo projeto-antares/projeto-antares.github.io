@@ -1,52 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Trabalho por uma força variável</title>
-<link rel="icon" type="image/png" href="../img/icons/antares-192.png">
-<script src="/js/init.min.js"></script>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+     <title>Trabalho por uma força variável</title>
+     <link rel="icon" type="image/png" href="../img/icons/antares-192.png">
+     <script src="/js/init.min.js"></script>
 </head>
 
 <body>
-<header id="site-header"></header>
-<div class="wrap">
-<div class="button"><a class="chip" href="fisica.html">← Voltar</a></div>
-<header  id="sim-description" class="book">
-     <h2>Trabalho por uma força variável</h2>
-     <p></p>
-</header>
+     <header id="site-header"></header>
+     <div class="wrap">
+          <div class="button"><a class="chip" href="fisica.html">← Voltar</a></div>
+          <header id="sim-description" class="book">
+               <h2>Trabalho por uma força variável</h2>
+               <p>Trabalho realizado por uma força dependente da posição de forma linear, \(F(x) = F_0 + kx\) ou
+                    quadrática, \(F(x) = F_0 + kx^2\), onde \(F_0\) e
+                    \(k\) são constantes que podem ser ajustadas na simulação. O trabalho é representado pela área sob a
+                    curva no gráfico da força em função do deslocamento.</p>
+          </header>
 
-<section class="card"><div><canvas id="cv"></canvas></div><div class="ro" id="ro"></div><p class="note" id="cmp"></p><div id="legenda"></div></section>
+          <section class="card">
+               <div><canvas id="cv"></canvas></div>
+               <div class="ro" id="ro"></div>
+               <p class="note" id="cmp"></p>
+               <div id="legenda"></div>
+          </section>
 
-<section id="opt">
-<div class="btns"><button class="p" id="bl">Soltar</button><button id="bp">Pausar</button><button id="bc">Reiniciar</button></div>
-<div id="ctl" style="margin-top:10px"></div>
+          <section id="opt">
+               <div class="btns"><button class="p" id="bl">Soltar</button><button id="bp">Pausar</button><button
+                         id="bc">Reiniciar</button></div>
+               <div id="ctl" style="margin-top:10px"></div>
 
-<!-- <label for="pl" style="font-size:.92rem">Corpo celeste</label>
-<select id="pl"><option value="9.8">Terra (9,8 m/s²)</option><option value="1.62">Lua (1,62 m/s²)</option><option value="3.71">Marte (3,71 m/s²)</option><option value="24.8">Júpiter (24,8 m/s²)</option></select>
-<label class="chk"><input type="checkbox" id="c_f" checked>Diagrama de forças</label>
-<label class="chk"><input type="checkbox" id="c_res">Força resultante em cada bloco</label> -->
-</section>
+               <label for="pl" style="font-size:.92rem">Tipo de força variável</label>
+               <select id="pl">
+                    <option value="1">Linear (padrão)</option>
+                    <option value="2">Quadrática</option>
+               </select>
+               <!-- <label class="chk"><input type="checkbox" id="c_f" checked>Diagrama de forças</label> -->
+               <!-- <label class="chk"><input type="checkbox" id="c_res">Força resultante em cada bloco</label> -->
+          </section>
 
-<section id="lvet">
-<!-- <div class="chk"><span class="sw" style="border-color:var(--a)"></span>Força gravitacional \(\vec F_g\)</div>
+          <section id="lvet">
+               <!-- <div class="chk"><span class="sw" style="border-color:var(--a)"></span>Força gravitacional \(\vec F_g\)</div>
 <div class="chk"><span class="sw" style="border-color:var(--acc)"></span>Normal \(\vec N\)</div>
 <div class="chk"><span class="sw" style="border-color:var(--vy)"></span>Tração \(\vec T\)</div>
 <div class="chk"><span class="sw" style="border-color:var(--ink)"></span>Resultante \(\vec F\)</div> -->
-</section>
+          </section>
 
-<section id="plt" class="plots">
-<div class="card"><div><canvas id="p1"></canvas></div></div>
-<div class="card" hidden><div><canvas id="p2"></canvas></div></div>
-</section>
+          <section id="plt" class="plots">
+               <div class="card">
+                    <div><canvas id="p1"></canvas></div>
+                    <p class="note">A área sombreada corresponde ao trabalho realizado pela força:
+                         \[ W = \int_{x_i}^{x_f} F_x\, dx.\]
+                    </p>
+               </div>
+               <div class="card" hidden>
+                    <div><canvas id="p2"></canvas></div>
+               </div>
+          </section>
 
-</div>
+     </div>
 
-<footer></footer>
+     <footer></footer>
 
-<script src="/js/core.min.js"></script>
-<script src="js/trabalho.js"></script>
+     <script src="/js/core.min.js"></script>
+     <script src="js/trabalho.js"></script>
 
 </body>
+
 </html>
