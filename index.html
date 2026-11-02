@@ -201,7 +201,7 @@
           '<div class="tags">' + (it.tags || []).map(t => '<span class="tag">' + t + '</span>').join('') + (it.disponivel === false ? '<span class="tag soon">em breve</span>' : '') + '</div></' + tag + '>';
       }
       if (C.sobre) { $('sobre').innerHTML = C.sobre; }
-      $('secoes').innerHTML = secs.map(s => '<section id="' + s.id + '"><h2>' + s.titulo + '</h2>' + (s.descricao ? '<p class="note" style="margin:-4px 0 10px">' + s.descricao + '</p>' : '') + '<div class="menu">' + s.itens.map(card).join('') + '</div></section>').join('');
+      $('secoes').innerHTML = secs.map(s => '<section id="' + s.id + '"><h2>' + s.titulo + '</h2>' + (s.descricao ? '<p class="book" style="margin:-4px 0 10px">' + s.descricao + '</p>' : '') + '<div class="menu">' + s.itens.map(card).join('') + '</div></section>').join('');
       // rodapé
       const r = C.rodape;
       if (r && (r.texto || (r.links || []).length)) { $('rod').innerHTML = (r.texto || '') + ((r.links || []).length ? (r.texto ? ' · ' : '') + r.links.map(l => '<a href="' + l.url + '">' + l.rotulo + '</a>').join(' · ') : ''); $('rod').hidden = false }

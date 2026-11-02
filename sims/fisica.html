@@ -1,84 +1,98 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Simulações de Física e Astronomia - Projeto Antαres</title>
-<link rel="icon" type="image/png" href="../img/icons/antares-192.png">
-<script src="/js/init.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Simulações de Física e Astronomia - Projeto Antαres</title>
+  <link rel="icon" type="image/png" href="../img/icons/antares-192.png">
+  <script src="/js/init.min.js"></script>
 </head>
+
 <body>
 
-<header id="site-header"></header>
-<div class="wrap">
-<div class="button"><a class="chip" href="/index.html">← Home</a></div>
+  <header id="site-header"></header>
+  <div class="wrap">
+    <div class="button"><a class="chip" href="/index.html">← Início</a></div>
 
-<header><h2 id="tt">Simulações de Física - Projeto Antαres</h2><p id="st"></p></header>
+    <header>
+      <h2 id="tt">Simulações de Física - Projeto Antαres</h2>
+      <p id="st"></p>
+    </header>
 
-<div class="tools" id="tools"></div>
-<div id="lista"></div>
-<p class="note" id="nt"></p>
-</div>
+    <div class="tools" id="tools"></div>
+    <div id="lista"></div>
+    <p class="note" id="nt"></p>
+  </div>
 
-<script src="/js/core.min.js"></script>
-<script src="/js/catalogo.min.js"></script>
+  <script src="/js/core.min.js"></script>
+  <script src="/js/catalogo.min.js"></script>
 
 
-<script>
-/* Menu: desenha os cartões a partir de window.CATALOGO (catalogo.js). Para mudar o conteúdo,
-   edite catalogo.js; para mudar o visual, edFite a seção "Menu" de core.css. */
-(function(){
- const C=window.CATALOGO||{},o=Object.assign({titulo:'Simulações de Física - Projeto Antαres',subtitulo:'',agruparPorTopico:true,mostrarBusca:true,mostrarFiltros:true,mostrarEmBreve:true,mostrarTema:true,abrirEmNovaAba:false},C.opcoes);
- const sims=C.simulacoes||[],tops=C.topicos||[],$=Sim.$,norm=s=>String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
- let filtro=(location.hash||'#todos').slice(1),busca='';
- if(filtro!=='todos'&&!tops.some(t=>t.id===filtro))filtro='todos';
- document.title=o.titulo+' - Projeto Antαres';$('tt').innerHTML=o.titulo;$('st').innerHTML=o.subtitulo;//$('st').className='card';
- // visível = respeita "em breve", o filtro de tópico e a busca (título, descrição e tags, sem acentos)
- const vis=s=>(s.disponivel!==false||o.mostrarEmBreve)&&(filtro==='todos'||s.topico===filtro)&&(!busca||norm([s.titulo,s.descricao,(s.tags||[]).join(' ')].join(' ')).includes(norm(busca)));
- const generico='<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="24" cy="24" r="14"/></svg>';
- function card(s){
-  const on=s.disponivel!==false,tag=on?'a':'div',nova=on&&o.abrirEmNovaAba?' target="_blank" rel="noopener"':'';
-  return '<'+tag+' class="card sim'+(on?'':' off')+'"'+(on?' href="'+s.arquivo+'"'+nova:'')+'><div class="sim-ic">'+(s.icone||generico)+'</div><h3>'+s.titulo+'</h3><p>'+(s.descricao||'')+'</p><div class="tags">'+
-   (s.tags||[]).map(t=>'<span class="tag">'+t+'</span>').join('')+(on?'':'<span class="tag soon">em breve</span>')+'</div></'+tag+'>';
- }
- function render(){
-  const v=sims.filter(vis);let h='';
-  if(o.agruparPorTopico){
-   const grupos=tops.concat(sims.some(s=>!tops.some(t=>t.id===s.topico))?[{id:'__outros',nome:'Outros'}]:[]);
-   grupos.forEach(g=>{const l=v.filter(s=>g.id==='__outros'?!tops.some(t=>t.id===s.topico):s.topico===g.id);
-    if(l.length)h+='<h2 class="tp">'+g.nome+'</h2><p></p><div class="menu">'+l.map(card).join('')+'</div>'});
-  }else h=v.length?'<div class="menu">'+v.map(card).join('')+'</div>':'';
-  $('lista').innerHTML=h||'<p class="note">Nenhuma simulação encontrada.</p>';
-  const disp=sims.filter(s=>s.disponivel!==false).length;
-  // $('nt').textContent=disp+' simulações disponíveis'+(o.mostrarEmBreve?' · '+(sims.length-disp)+' em breve':'')+'.';
-  document.querySelectorAll('.chip[data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t===filtro));
-  Sim.math($('lista'));
- }
- // ferramentas: busca, filtros por tópico e tema
- const T=$('tools');
- if(o.mostrarBusca){const i=document.createElement('input');i.type='search';i.placeholder='Buscar simulação...';i.setAttribute('aria-label','Buscar simulação');i.oninput=()=>{busca=i.value;render()};T.appendChild(i)}
- if(o.mostrarFiltros){
-  const ch=document.createElement('div');ch.className='chips';
-  [{id:'todos',nome:'Todos'}].concat(tops).forEach(t=>{const n=t.id==='todos'?sims.filter(s=>s.disponivel!==false||o.mostrarEmBreve).length:sims.filter(s=>s.topico===t.id&&(s.disponivel!==false||o.mostrarEmBreve)).length;
-   if(!n)return;const b=document.createElement('button');b.className='chip';b.dataset.t=t.id;b.innerHTML=t.nome+'<small>'+n+'</small>';
-   b.onclick=()=>{filtro=t.id;try{history.replaceState(null,'','#'+t.id)}catch(e){}render()};ch.appendChild(b)});
-  T.appendChild(ch);
- }
+  <script>
+    /* Menu: desenha os cartões a partir de window.CATALOGO (catalogo.js). Para mudar o conteúdo,
+       edite catalogo.js; para mudar o visual, edFite a seção "Menu" de core.css. */
+    (function () {
+      const C = window.CATALOGO || {}, o = Object.assign({ titulo: 'Simulações de Física - Projeto Antαres', subtitulo: '', agruparPorTopico: true, mostrarBusca: true, mostrarFiltros: true, mostrarEmBreve: true, mostrarTema: true, abrirEmNovaAba: false }, C.opcoes);
+      const sims = C.simulacoes || [], tops = C.topicos || [], $ = Sim.$, norm = s => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      let filtro = (location.hash || '#todos').slice(1), busca = '';
+      if (filtro !== 'todos' && !tops.some(t => t.id === filtro)) filtro = 'todos';
+      document.title = o.titulo + ' - Projeto Antαres'; $('tt').innerHTML = o.titulo; $('st').innerHTML = o.subtitulo;//$('st').className='card';
+      // visível = respeita "em breve", o filtro de tópico e a busca (título, descrição e tags, sem acentos)
+      const vis = s => (s.disponivel !== false || o.mostrarEmBreve) && (filtro === 'todos' || s.topico === filtro) && (!busca || norm([s.titulo, s.descricao, (s.tags || []).join(' ')].join(' ')).includes(norm(busca)));
+      const generico = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="24" cy="24" r="14"/></svg>';
+      function card(s) {
+        const on = s.disponivel !== false, tag = on ? 'a' : 'div', nova = on && o.abrirEmNovaAba ? ' target="_blank" rel="noopener"' : '';
+        return '<' + tag + ' class="card sim' + (on ? '' : ' off') + '"' + (on ? ' href="' + s.arquivo + '"' + nova : '') + '><div class="sim-ic">' + (s.icone || generico) + '</div><h3>' + s.titulo + '</h3><p>' + (s.descricao || '') + '</p><div class="tags">' +
+          (s.tags || []).map(t => '<span class="tag">' + t + '</span>').join('') + (on ? '' : '<span class="tag soon">em breve</span>') + '</div></' + tag + '>';
+      }
+      function render() {
+        const v = sims.filter(vis); let h = '';
+        if (o.agruparPorTopico) {
+          const grupos = tops.concat(sims.some(s => !tops.some(t => t.id === s.topico)) ? [{ id: '__outros', nome: 'Outros' }] : []);
+          grupos.forEach(g => {
+            const l = v.filter(s => g.id === '__outros' ? !tops.some(t => t.id === s.topico) : s.topico === g.id);
+            if (l.length) h += '<h2 class="tp">' + g.nome + '</h2><p></p><div class="menu">' + l.map(card).join('') + '</div>'
+          });
+        } else h = v.length ? '<div class="menu">' + v.map(card).join('') + '</div>' : '';
+        $('lista').innerHTML = h || '<p class="note">Nenhuma simulação encontrada.</p>';
+        const disp = sims.filter(s => s.disponivel !== false).length;
+        // $('nt').textContent=disp+' simulações disponíveis'+(o.mostrarEmBreve?' · '+(sims.length-disp)+' em breve':'')+'.';
+        document.querySelectorAll('.chip[data-t]').forEach(b => b.classList.toggle('on', b.dataset.t === filtro));
+        Sim.math($('lista'));
+      }
+      // ferramentas: busca, filtros por tópico e tema
+      const T = $('tools');
+      if (o.mostrarBusca) { const i = document.createElement('input'); i.type = 'search'; i.placeholder = 'Buscar simulação...'; i.setAttribute('aria-label', 'Buscar simulação'); i.oninput = () => { busca = i.value; render() }; T.appendChild(i) }
+      if (o.mostrarFiltros) {
+        const ch = document.createElement('div'); ch.className = 'chips';
+        [{ id: 'todos', nome: 'Todos' }].concat(tops).forEach(t => {
+          const n = t.id === 'todos' ? sims.filter(s => s.disponivel !== false || o.mostrarEmBreve).length : sims.filter(s => s.topico === t.id && (s.disponivel !== false || o.mostrarEmBreve)).length;
+          if (!n) return; const b = document.createElement('button'); b.className = 'chip'; b.dataset.t = t.id; b.innerHTML = t.nome + '<small>' + n + '</small>';
+          b.onclick = () => { filtro = t.id; try { history.replaceState(null, '', '#' + t.id) } catch (e) { } render() }; ch.appendChild(b)
+        });
+        T.appendChild(ch);
+      }
 
- render();
-})();
-</script>
+      render();
+    })();
+  </script>
 
-<div class="wrap" hidden>
-<section>
-<details class="card" style="max-width:100%">
-  <summary>Uso de ferramentas inteligência artificial</summary>
-  <p style="max-width:100%; margin:5px; padding:0">Ferramentas de inteligência artificial generativa foram utilizadas como auxiliares no desenvolvimento do núcleo computacional das simulações, incluindo tarefas de programação, depuração e aprimoramento do código. As ferramentas atuaram como apoio ao processo de desenvolvimento, sob orientação do autor, que permanece responsável pelo conteúdo, pelas escolhas pedagógicas e pela revisão e validação das simulações.</p>
-</details>
-</section>
-</div>
+  <div class="wrap" hidden>
+    <section>
+      <details class="card" style="max-width:100%">
+        <summary>Uso de ferramentas inteligência artificial</summary>
+        <p style="max-width:100%; margin:5px; padding:0">Ferramentas de inteligência artificial generativa foram
+          utilizadas como auxiliares no desenvolvimento do núcleo computacional das simulações, incluindo tarefas de
+          programação, depuração e aprimoramento do código. As ferramentas atuaram como apoio ao processo de
+          desenvolvimento, sob orientação do autor, que permanece responsável pelo conteúdo, pelas escolhas pedagógicas
+          e pela revisão e validação das simulações.</p>
+      </details>
+    </section>
+  </div>
 
-<footer></footer>
+  <footer></footer>
 
 </body>
+
 </html>
