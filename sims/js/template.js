@@ -45,7 +45,9 @@
       if (Sim.ctl.zoom)
         Sim.ctl.zoom.upd(Math.round(z * 100));
     }
-  }); Sim.playbar(cv, () => mode, () => paused);
+  });
+
+  Sim.playbar(cv, () => mode, () => paused);
 
   // ---------------------------------------------------------------------
   // 2. INTERFACE E CONTROLES
