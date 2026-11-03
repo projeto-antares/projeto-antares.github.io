@@ -43,7 +43,7 @@
   window.CATALOGO = {
     opcoes: {
       titulo: 'Simulações interativas de Física',
-      subtitulo: 'Nesta página, são incluídas reproduções simuladas simples de situações físicas que são tratadas em diferentes tópicos da Física básica. As simulações estão sendo produzidas como complemento do <a href="index.html#livros">livro didático</a> do projeto. Na maioria das simulações, gráficos temporais mostram a evolução das diferentes variáveis do sistema representado. Cada simulação é independente e roda diretamente no navegador, sendo possível ajustar variáveis e modos de exibição.',
+      subtitulo: 'Nesta página são incluídas representações simuladas simples de situações físicas que são tratadas em diferentes tópicos da Física básica. As simulações estão sendo produzidas sistematicamente como complemento do <a href="index.html#livros">livro didático</a> do projeto. Na maioria das simulações, gráficos temporais mostram a evolução das diferentes variáveis do sistema representado. Cada simulação é independente e roda diretamente no navegador, sendo possível ajustar variáveis e modos de exibição.',
       agruparPorTopico: true, mostrarBusca: true, mostrarFiltros: true, mostrarEmBreve: true, mostrarTema: false, abrirEmNovaAba: false
     },
     topicos: [
