@@ -48,13 +48,13 @@
     },
     topicos: [
       { id: 'cinematica', nome: 'Cinemática', descricao: 'Movimento em uma e duas dimensões' },
-      { id: 'newton', nome: 'Dinâmica', descricao: 'Aplicações das leis de Newton' },
+      { id: 'dinamica', nome: 'Dinâmica', descricao: 'Aplicações das leis de Newton' },
       { id: 'momento', nome: 'Momento e colisões', descricao: 'Conservação do momento linear' },
       { id: 'energia', nome: 'Energia', descricao: '' },
       { id: 'rotacao', nome: 'Rotação', descricao: '' },
       { id: 'gravitacao', nome: 'Gravitação', descricao: '' },
       { id: 'fluidos', nome: 'Mecânica dos fluidos', descricao: '' },
-      { id: 'oscilacoes', nome: 'Oscilações', descricao: '' },
+      { id: 'oscilacao', nome: 'Oscilação', descricao: '' },
       { id: 'ondas', nome: 'Ondas', descricao: '' },
       { id: 'termodinamica', nome: 'Termodinâmica', descricao: '' },
       { id: 'eletromagnetismo', nome: 'Eletromagnetismo', descricao: '' },
@@ -86,7 +86,7 @@
         id: 'inclinado',
         titulo: 'Plano inclinado',
         descricao: 'Bloco em um plano inclinado, com e sem atrito, com todas as forças que atuam sobre ele \\((\\vec F_g, \\vec N, \\vec f)\\).',
-        topico: 'newton',
+        topico: 'dinamica',
         tags: ['forças', 'diagramas', 'atrito'],
         arquivo: 'inclinado.html',
         icone: IC.inclinado
@@ -95,7 +95,7 @@
         id: 'atwood',
         titulo: 'Máquina de Atwood',
         descricao: 'Duas massas ligadas por uma polia: aceleração e tração.',
-        topico: 'newton',
+        topico: 'dinamica',
         tags: ['polia', 'forças', 'diagramas'],
         arquivo: 'atwood.html',
         icone: IC.atwood
@@ -104,7 +104,7 @@
         id: 'blocos',
         titulo: 'Blocos conectados',
         descricao: 'Blocos em planos inclinados por diferentes ângulos estão conectados por uma corda ideal que passa por uma polia fixa também ideal.',
-        topico: 'newton',
+        topico: 'dinamica',
         tags: ['polia', 'forças', 'diagramas', 'atrito'],
         arquivo: 'blocos.html',
         icone: IC.blocos
@@ -189,7 +189,7 @@
         id: 'massamola',
         titulo: 'Sistema massa-mola',
         descricao: 'Oscilador harmônico clássico com ou sem amortecimento.',
-        topico: 'oscilacoes',
+        topico: 'oscilacao',
         tags: ['oscilador', 'atrito', 'energia'],
         arquivo: 'massamola.html',
         icone: IC.oscilador

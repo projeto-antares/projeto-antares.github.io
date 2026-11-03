@@ -180,7 +180,7 @@
     </div>
 
     <div id="prefacio" class="pagina" hidden>
-      <h2>Prefácio da obra “Física” (volumes 1 a 4)</h2>
+      <h2><a href="#livros" style="font-size:0.8em">Publicações/</a>Prefácio da obra “Física” (volumes 1 a 4)</h2>
       <main>
         <section class="card">
           <p>Este livro foi elaborado com a intenção de abordar, de forma cuidadosa e didática, os principais tópicos
@@ -226,8 +226,8 @@
     </div>
 
     <div id="fisica1" class="pagina" hidden>
-      <p><a href="#" onclick="history.back(); return false;">← Voltar</a></p>
-      <h2>Física - Volume 1</h2>
+      <h2><a href="#livros" style="font-size:0.8em">Publicações/</a>Física -
+        Volume 1</h2>
       <main>
         <section class="card">
           <p>
@@ -406,6 +406,11 @@
           });
 
           history.replaceState(null, '', inicio ? location.pathname : '#' + id);
+          // Posiciona o conteúdo no topo
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
         }
 
         $('secoes').addEventListener('click', e => {
