@@ -52,7 +52,7 @@
           const grupos = tops.concat(sims.some(s => !tops.some(t => t.id === s.topico)) ? [{ id: '__outros', nome: 'Outros' }] : []);
           grupos.forEach(g => {
             const l = v.filter(s => g.id === '__outros' ? !tops.some(t => t.id === s.topico) : s.topico === g.id);
-            if (l.length) h += '<h2 class="tp">' + g.nome + '</h2><p></p><div class="menu">' + l.map(card).join('') + '</div>'
+            if (l.length) h += '<h3 class="tp">' + g.nome + '</h3><p></p><div class="menu">' + l.map(card).join('') + '</div>'
           });
         } else h = v.length ? '<div class="menu">' + v.map(card).join('') + '</div>' : '';
         $('lista').innerHTML = h || '<p class="note">Nenhuma simulação encontrada.</p>';

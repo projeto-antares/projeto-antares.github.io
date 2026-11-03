@@ -21,9 +21,9 @@
     </header>
     <!-- Ids usados pelo script: tt, st, tools, sobre, secoes, rod. O conteúdo vem de projeto.js (não edite os cartões aqui). -->
     <nav class="tools" id="tools" aria-label="Seções"></nav>
-    <div id="sobre" class="card sobre"></div>
-    <div id="sobretudo" hidden>
-      <!-- <div class="wrap"> -->
+    <div id="sobre" class="card sobre pagina"></div>
+
+    <div id="sobretudo" class="pagina" hidden>
       <h2>Sobre o projeto</h2>
 
       <main>
@@ -50,7 +50,7 @@
             outras iniciativas. Em uma escala um tanto limitada, este projeto partilha desses mesmos propósitos.
           </p>
 
-          <p>Durante a pandemia da <strong>COVID-19</strong>, o dia a dia nas universidades virou de cabeça para
+          <p>Durante a pandemia da (COVID-19), o dia a dia nas universidades virou de cabeça para
             baixo, tanto para os alunos quanto para os professores. Todos fomos forçados a encontrar
             alternativas para continuar ensinando e aprendendo de forma não presencial, online, digital, enfim,
             sem muito tempo para nos prepararmos. Não tenho boas lembranças desse período, primeiro pela falta
@@ -91,13 +91,13 @@
             Abertos (<em>Open Educational Resources</em>, OER). Segundo Hilton III (2010), um OER deve ser
             disponibilizado de forma a permitir os quatro ‘R’s do acesso livre:</p>
           <ul>
-            <li><strong>Reutilizar</strong>: Qualquer pessoa pode usar todo ou parte do trabalho para seus
+            <li>(Reutilizar): Qualquer pessoa pode usar todo ou parte do trabalho para seus
               próprios propósitos (por exemplo, baixar o livro digital para ler/estudar posteriormente);</li>
-            <li><strong>Redistribuir</strong>: Qualquer pessoa pode compartilhar o trabalho com outras (por
+            <li>(Redistribuir): Qualquer pessoa pode compartilhar o trabalho com outras (por
               exemplo, enviando o livro digital por e-mail para um colega);</li>
-            <li><strong>Revisar</strong>: As pessoas podem adaptar, modificar, traduzir ou alterar o trabalho
+            <li>(Revisar): As pessoas podem adaptar, modificar, traduzir ou alterar o trabalho
               (por exemplo, traduzir o livro para outro idioma ou transformá-lo em um audiolivro);</li>
-            <li><strong>Remixar</strong>: As pessoas podem pegar dois ou mais recursos existentes e combiná-los
+            <li>(Remixar): As pessoas podem pegar dois ou mais recursos existentes e combiná-los
               para criar um novo (por exemplo, combinar um trecho de um livro digital com o áudio de uma
               palestra, criando um novo trabalho derivado).</li>
           </ul>
@@ -120,25 +120,27 @@
           <p class="p1" style="text-align: right;">Prof. Dr. Abílio Mateus<br /> Universidade Federal de Santa
             Catarina</p>
         </section>
-        <aside class="card" style="font-size: 0.9em;">
+        <aside style="font-size: 0.9em;">
           <section class="card" style="margin-bottom: 1em;background: var(--sky);">
+            <!-- <section> -->
             <h3>Antares</h3>
 
-            <p><strong>Antares</strong> (α Scorpii) é uma estrela supergigante vermelha na constelação de
+            <p>(Antares) (α Scorpii) é uma estrela supergigante vermelha na constelação de
               Scorpius. Está
               localizada cerca de 550 anos-luz do Sistema Solar e é cerca de 700 vezes maior que o Sol.
             </p>
             <span style="display: block;justify-content: center; text-align: center; margin-bottom: 1em;"><img
-                src="img/eso1726a.jpg" width="80%">Créditos: <a href="https://www.eso.org/public/images/eso1726a/"
+                src="img/eso1726a.jpg" width="100%">Créditos: <a href="https://www.eso.org/public/images/eso1726a/"
                 target="_blank">VLTI/ESO</a></span>
 
           </section>
-          <section class="card" style="background: var(--sky);">
+
+          <section class="card" style="margin-bottom: 1em;background: var(--sky);">
             <h3>Recursos Educacionais Abertos</h3>
 
             <span style="display: block;justify-content: center; text-align: center; margin-bottom: 1em;"><img
                 src="img/oer.png" width="150px"></span>
-            <p><strong>Recursos Educacionais Abertos</strong> (REA) são materiais destinados ao ensino, à
+            <p>(Recursos Educacionais Abertos) (REA) são materiais destinados ao ensino, à
               aprendizagem e à pesquisa, em qualquer suporte ou formato, que se encontram em domínio público
               ou são disponibilizados sob licenças abertas, permitindo seu acesso, uso, adaptação e
               compartilhamento.</p>
@@ -156,7 +158,7 @@
                 href="https://www.unesco.org/en/legal-affairs/recommendation-open-educational-resources-oer"
                 target="_blank">Recomendação da UNESCO sobre Recursos Educacionais Abertos</a>, de 2019.</p>
             <p style="justify-content: center;text-align:center; color: var(--acc)">── ● ──</p>
-            <p>No <strong>Projeto Antαres</strong>, os materiais são disponibilizados sob a licença <a
+            <p>No (Projeto Antαres), os materiais são disponibilizados sob a licença <a
                 href="https://creativecommons.org/licenses/by-nc/4.0/deed.pt-br">Creative Commons Atribuição
                 NãoComercial 4.0 Internacional</a> (CC BY-NC 4.0), que permite sua reprodução, distribuição
               e adaptação, desde que sejam atribuídos os devidos créditos ao autor e que não haja utilização
@@ -167,7 +169,7 @@
         </aside>
       </main>
       <section class="card" style="margin-top: 1em;background: var(--sky);">
-        <p><strong>Referências</strong>:</p>
+        <h3>Referências:</h3>
         <p class="p1">Nature Physics. <a href="https://www.nature.com/articles/s41567-020-01122-x">Don’t let
             lecture notes rot</a>, Nature Physics, 2020, v. 16, p. 1167–1167</p>
         <p class="p1">Hilton III. J., Wiley D., Stein J., Johnson A. The four ‘R’s of openness and ALMS
@@ -175,6 +177,134 @@
           Distance and e-Learning, 2010, v. 25, p. 37–44</p>
       </section>
       <!-- </div> -->
+    </div>
+
+    <div id="prefacio" class="pagina" hidden>
+      <h2>Prefácio da obra “Física” (volumes 1 a 4)</h2>
+      <main>
+        <section class="card">
+          <p>Este livro foi elaborado com a intenção de abordar, de forma cuidadosa e didática, os principais tópicos
+            da Física básica, fundamentais para a compreensão do mundo ao nosso redor. Conceitos e teorias, que
+            desempenham
+            importantes papéis em diversas áreas da Física, são introduzidos e definidos de acordo com o nível
+            matemático
+            exigido ao longo de qualquer curso universitário de Física, Engenharias e áreas afins. Aspectos básicos do
+            cálculo
+            diferencial e integral são aplicados no decorrer dos capítulos, e devem ser tratados como uma ferramenta
+            indispensável para o entendimento da descrição matemática de diferentes situações físicas.</p>
+          <p>Uma preocupação constante ao longo da elaboração deste livro foi o tratamento histórico dos conceitos
+            envolvidos, adicionando referências bibliográficas, sempre que possível, às publicações originais. O texto
+            foi
+            construído com base nas referências citadas, nas notas de aula das disciplinas ministradas pelo autor ao
+            longo dos
+            anos e na sua experiência na abordagem do assunto com os estudantes. É importante destacar que este é um
+            trabalho em
+            constante evolução, e quaisquer contribuições, correções e críticas construtivas serão bem vindas pelo
+            autor. Além
+            disso, este livro não tem a pretensão de ser completo ou inovador, mas sim oferecer uma base sólida e
+            concisa para o
+            aprofundamento do conhecimento sobre os princípios fundamentais da Física.</p>
+          <p>No momento, a distribuição deste livro é feita apenas digitalmente no formato PDF (<em>Portable Document
+              Format</em>), que permite a visualização e impressão do conteúdo de forma idêntica, independentemente do
+            software, hardware ou sistema operacional utilizado, garantindo que o documento mantenha a sua formatação
+            original
+            ao ser aberto em qualquer dispositivo, especialmente <em>smartphones</em> e <em>tablets</em>. Além disso,
+            possui a
+            vantagem de facilitar o acesso e o compartilhamento das informações aqui contidas, um dos objetivos do
+            projeto de
+            elaboração deste material.</p>
+          <p>O conteúdo do livro está dividido em quatro volumes, que correspondem a cada um dos quatro semestres de
+            disciplinas regulares de Física básica. Atualmente, os conteúdos estão adequados para as ementas das
+            disciplinas do
+            ciclo básico oferecidas pelo Departamento de Física da Universidade Federal de Santa Catarina (UFSC), mas
+            serão
+            complementados em uma edição posterior.</p>
+          <p style="text-align: right;">Florianópolis, fevereiro de 2025</p>
+          <p style="text-align: right;">Abílio Mateus<br /> Universidade Federal de Santa Catarina</p>
+        </section>
+      </main>
+    </div>
+
+    <div id="fisica1" class="pagina" hidden>
+      <p><a href="#" onclick="history.back(); return false;">← Voltar</a></p>
+      <h2>Física - Volume 1</h2>
+      <main>
+        <section class="card">
+          <p>
+            Este primeiro volume está organizado de forma a introduzir os diferentes
+            conceitos físicos gradualmente para uma disciplina inicial de Física com
+            duração de um semestre, assumindo-se que um curso introdutório de cálculo
+            diferencial e integral esteja sendo realizado de forma concomitante.
+          </p>
+
+          <p>
+            O Capítulo 1 (Introdução) apresenta uma breve discussão sobre a
+            natureza da Física, grandezas físicas e unidades básicas, e formas de
+            representação simbólica e numérica; uma seção é dedicada ao processo da
+            resolução de problemas em Física, essencial para qualquer pessoa que
+            deseja testar os conhecimentos adquiridos.
+          </p>
+
+          <p>
+            No Capítulo 2 (Vetores) apresentamos o conceito de vetor, fundamental
+            para a descrição matemática de diversas grandezas físicas. Propriedades
+            e operações básicas envolvendo vetores são apresentadas.
+          </p>
+
+          <p>
+            No Capítulo 3 (Forças) introduzimos o conceito de força com ênfase na
+            aplicação da álgebra vetorial a problemas físicos envolvendo o equilíbrio
+            de forças, como forma de reforçar o uso correto de vetores e da
+            decomposição vetorial.
+          </p>
+
+          <p>
+            A descrição dos movimentos dos corpos é realizada no Capítulo 4
+            (Cinemática), onde são definidos os conceitos básicos da
+            cinemática, como velocidade e aceleração, e as equações associadas a
+            diferentes tipos de movimentos em uma e duas dimensões.
+          </p>
+
+          <p>
+            A dinâmica é o ponto alto da mecânica e assunto principal do Capítulo 5
+            (Dinâmica), onde as ferramentas apresentadas nos capítulos
+            anteriores (vetores, forças e cinemática) são utilizadas para introduzir
+            as leis de Newton e aplicá-las na resolução de diversas situações físicas
+            que envolvem corpos sob a ação de forças.
+          </p>
+
+          <p>
+            No Capítulo 6 (Momento), o conceito da quantidade de movimento, ou
+            simplesmente momento, é utilizado para descrever sistemas de partículas,
+            processos de colisões e sistemas de massa variável.
+          </p>
+
+          <p>
+            No Capítulo 7 (Energia) discutimos o conceito abstrato de energia e a
+            conservação da energia mecânica, extremamente úteis para a resolução de
+            diferentes problemas na Física. Conceitos como trabalho, energia cinética
+            e energia potencial serão naturalmente discutidos nesse capítulo.
+          </p>
+
+          <p>
+            Finalmente, no Capítulo 8 (Inércia) estendemos a aplicação da mecânica
+            newtoniana em referenciais acelerados, discutindo a natureza das chamadas
+            forças inerciais e a interpretação física da inércia, especialmente sua
+            profunda relação com a gravitação por meio do chamado princípio da
+            equivalência.
+          </p>
+        </section>
+        <section class="card" style="margin-bottom: 1em;background: var(--sky);">
+          <h3>Download</h3>
+          <p><a href="https://doi.org/10.5281/zenodo.16541433" target="_blank">Física - Volume 1 </a></p>
+          <p><a href="https://doi.org/10.5281/zenodo.16541433" target="_blank"><img
+                src="https://zenodo.org/badge/DOI/10.5281/zenodo.16541433.svg"></a></p>
+          <p>Mateus, A. (2026). Física - volume 1 (Version v1.11.0). Projeto Antαres.
+            https://doi.org/10.5281/zenodo.21865044</p>
+        </section>
+        <aside>
+        </aside>
+      </main>
     </div>
 
     <div id="secoes"></div>
@@ -192,13 +322,27 @@
       document.title = 'Projeto Antαres'; $('tt').innerHTML = (o.logo ? '<img class="logo" src="' + o.logo + '" alt="">' : '') + o.nome; $('st').innerHTML = o.subtitulo;
       const gen = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="24" cy="24" r="14"/></svg>';
 
-      // cartão: link só se houver `arquivo` e o item estiver disponível; "em breve" só com disponivel:false
       function card(it) {
-        const on = !!it.arquivo && it.disponivel !== false, tag = on ? 'a' : 'div', nova = on && (it.novaAba !== undefined ? it.novaAba : o.abrirEmNovaAba) ? ' target="_blank" rel="noopener"' : '';
-        return '<' + tag + ' class="card sim' + (it.destaque ? ' wide' : '') + (it.disponivel === false ? ' off' : '') + '"' + (on ? ' href="' + it.arquivo + '"' + nova : '') + '>' +
-          (it.imagem ? '<img class="capa" src="' + it.imagem + '" alt="' + String(it.titulo || '').replace(/<[^>]*>/g, '').replace(/"/g, '') + '">' : '<div class="sim-ic">' + (it.icone || gen) + '</div>') +
-          '<h3>' + it.titulo + '</h3><p class="book">' + (it.descricao || '') + '</p>' + (on ? '<span class="go">' + (it.botao || 'Abrir') + ' →</span>' : '') +
-          '<div class="tags">' + (it.tags || []).map(t => '<span class="tag">' + t + '</span>').join('') + (it.disponivel === false ? '<span class="tag soon">em breve</span>' : '') + '</div></' + tag + '>';
+        const interno = !!it.id && document.getElementById(it.id);
+        const on = it.disponivel !== false;
+        const tag = on ? 'a' : interno ? 'button' : 'div';
+        const nova = on && (it.novaAba !== undefined ? it.novaAba : o.abrirEmNovaAba)
+          ? ' target="_blank" rel="noopener"' : '';
+
+        return '<' + tag + ' class="card sim' +
+          (it.destaque ? ' wide' : '') +
+          (it.disponivel === false ? ' off' : '') + '" style="text-align:left"' +
+          (on ? ' href="' + it.arquivo + '"' + nova : '') +
+          (interno ? ' type="button" data-item="' + it.id + '"' : '') + '>' +
+          (it.imagem
+            ? '<img class="capa" src="' + it.imagem + '" alt="' + String(it.titulo || '').replace(/<[^>]*>/g, '').replace(/"/g, '') + '">'
+            : '<div class="sim-ic">' + (it.icone || gen) + '</div>') +
+          '<h3>' + it.titulo + '</h3><p class="book">' + (it.descricao || '') + '</p>' +
+          (on ? '<span class="go">' + (it.botao || 'Abrir') + ' →</span>' : '') +
+          '<div class="tags">' +
+          (it.tags || []).map(t => '<span class="tag">' + t + '</span>').join('') +
+          (it.disponivel === false ? '<span class="tag soon">em breve</span>' : '') +
+          '</div></' + tag + '>';
       }
       if (C.sobre) { $('sobre').innerHTML = C.sobre; }
       $('secoes').innerHTML = secs.map(s => '<section id="' + s.id + '"><h2>' + s.titulo + '</h2>' + (s.descricao ? '<p class="book" style="margin:-4px 0 10px">' + s.descricao + '</p>' : '') + '<div class="menu">' + s.itens.map(card).join('') + '</div></section>').join('');
@@ -227,19 +371,30 @@
 
         function mostrarSecao(id) {
           const inicio = id === 'inicio';
-          const isSobre = id === 'sobre';
+          const sobre = id === 'sobre';
 
-          // Resumo da página inicial
-          $('sobre').hidden = !inicio;
+          // Oculta todas as páginas independentes
+          document.querySelectorAll('.pagina').forEach(el => {
+            el.hidden = true;
+          });
 
-          // Conteúdo completo
-          $('sobretudo').hidden = !isSobre;
-
-          // Seções de simulações
+          // Controla as seções da página inicial
           secs.forEach(s => {
             const el = document.getElementById(s.id);
-            if (el) el.hidden = !inicio && (isSobre || s.id !== id);
+            if (el) el.hidden = !inicio && s.id !== id;
           });
+
+          // Exibe a página independente selecionada
+          if (sobre) {
+            $('sobretudo').hidden = false;
+          } else if (!inicio) {
+            const alvo = document.getElementById(id);
+            if (alvo && alvo.classList.contains('pagina')) {
+              alvo.hidden = false;
+            }
+          }
+          // Resumo da página inicial
+          $('sobre').hidden = !inicio;
 
           // Navegação ativa
           ch.querySelectorAll('.chip').forEach(c => {
@@ -250,8 +405,16 @@
             else c.removeAttribute('aria-current');
           });
 
-          history.replaceState(null, '', id === 'inicio' ? location.pathname : '#' + id);
+          history.replaceState(null, '', inicio ? location.pathname : '#' + id);
         }
+
+        $('secoes').addEventListener('click', e => {
+          const card = e.target.closest('[data-item]');
+          if (!card) return;
+
+          e.preventDefault();
+          mostrarSecao(card.dataset.item);
+        });
 
         ch.addEventListener('click', e => {
           const a = e.target.closest('a[data-secao]');
@@ -273,6 +436,17 @@
             });
         });
       }
+
+      // Navegação por hash
+      function carregarHash() {
+        const id = location.hash.slice(1);
+        mostrarSecao(id || 'inicio');
+      }
+
+      window.addEventListener('hashchange', carregarHash);
+
+      // Abre a página correspondente ao carregar o index
+      carregarHash();
 
     })();
   </script>
