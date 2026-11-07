@@ -39,7 +39,7 @@
       subtitulo: '',
       mostrarNav: true, mostrarTema: true, abrirEmNovaAba: false, mostrarFiltros: true,
     },
-    sobre: '<p>Projeto para elaboração e distribuição de material de apoio (livros, notas de aula e simulações), nas áreas de Física e Astronomia, seguindo o modelo dos chamados Recursos Educacionais Abertos (do inglês, <em>Open Educational Resources</em>).',
+    sobre: '<p>🛈 Projeto para elaboração e distribuição de material de apoio(livros, notas de aula e simulações), nas áreas de Física e Astronomia, seguindo o modelo dos chamados Recursos Educacionais Abertos(do inglês, <em>Open Educational Resources</em>).',
     secoes: [
       {
         id: 'sims', titulo: 'Simulações', descricao: 'Simulações interativas que rodam diretamente no navegador. Não é necessário instalar nada.', itens: [
@@ -53,10 +53,15 @@
         ]
       },
       {
+        id: 'cursos', titulo: 'Cursos e disciplinas', descricao: 'Textos, listas e outros recursos de apoio.', itens: [
+          { id: 'teste', titulo: 'Disciplinas', descricao: 'Notas de aula, listas de exercícios, roteiros ou outros materiais.', arquivo: 'aulas/index.html', botao: 'Abrir', tags: ['material didático'], icone: IC.material, disponivel: true }
+        ]
+      },
+      {
         id: 'material', titulo: 'Outros', descricao: 'Textos, listas e outros recursos de apoio.', itens: [
           { id: 'teste', titulo: 'Título do material', descricao: 'Notas de aula, listas de exercícios, roteiros ou outros materiais.', arquivo: '', botao: 'Abrir', tags: ['material didático'], icone: IC.material, disponivel: false }
         ]
-      }
+      },
     ],
     rodape: {
       texto: '',
