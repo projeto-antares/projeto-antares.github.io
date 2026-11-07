@@ -287,14 +287,32 @@
                 if ($('sobre')) $('sobre').hidden = false;
                 area.hidden = false;
 
+                // if (id && id !== 'inicio') {
+                //     const secao = $(id);
+                //     if (secao && secao.classList.contains('secao')) {
+                //         requestAnimationFrame(() => {
+                //             secao.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                //         });
+                //     }
+                // } else {
+                //     window.scrollTo(0, 0);
+                // }
                 if (id && id !== 'inicio') {
                     const secao = $(id);
+
+                    $('sobre').hidden = true;
+                    document.querySelectorAll('.secao').forEach(el => {
+                        el.hidden = el !== secao;
+                    });
+
                     if (secao && secao.classList.contains('secao')) {
-                        requestAnimationFrame(() => {
-                            secao.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        });
+                        window.scrollTo(0, 0);
                     }
                 } else {
+                    document.querySelectorAll('.secao').forEach(el => {
+                        el.hidden = false;
+                    });
+
                     window.scrollTo(0, 0);
                 }
             }
